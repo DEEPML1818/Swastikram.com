@@ -131,6 +131,39 @@ https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are"
 						</div>
 					</section>
 
+					<!-- GitHub Recent Works (new) -->
+					<section id="recent-github">
+					<header class="major">
+						<h2>GitHub Recent Works</h2>
+					</header>
+					<div id="github-work" class="row">
+						<!-- Content loaded via JavaScript -->
+					</div>
+					</section>
+
+					<script>
+					async function loadGitHubRepos() {
+						const username = 'DEEPML1818';
+						try {
+						const res = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
+						if (!res.ok) throw new Error('Failed to fetch GitHub repos');
+						const repos = await res.json();
+						const container = document.getElementById('github-work');
+						repos.forEach(repo => {
+							container.innerHTML += `
+							<article class="col-6 col-12-xsmall work-item">
+								<h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+								<p>${repo.description || 'No description available.'}</p>
+							</article>`;
+						});
+						} catch (err) {
+						console.error(err);
+						document.getElementById('github-work').innerHTML = '<p>Could not load GitHub repositories at this time.</p>';
+						}
+					}
+					document.addEventListener('DOMContentLoaded', loadGitHubRepos);
+					</script>
+
 				<!-- Three -->
 					<!-- Skills & Technologies Section -->
 					<section id="skills">
@@ -138,15 +171,18 @@ https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are"
 							<h2>Skills & Technologies</h2>
 						</header>
 						<ul class="skills-list">
-							<li><strong>Languages:</strong> Solidity, Rust, Golang, Vyper, Python, JavaScript, TypeScript, C++, Ruby, PHP, Java, Swift</li>
-							<li><strong>Frameworks & Libraries:</strong> React, Vue.js, Node.js, Express, Angular, Next.js, Nuxt.js, Tailwind CSS, Bootstrap, jQuery</li>
+							<li><strong>Languages:</strong> Solidity, Rust, Golang, Vyper, Move, Python, JavaScript, TypeScript, C++, Ruby, PHP, Java, Swift</li>
+							<li><strong>Frameworks & Libraries:</strong> React, Vue.js, Node.js, Express, Angular, Next.js, Nuxt.js, Tailwind CSS, Bootstrap, jQuery, Chakra UI, Radix UI</li>
 							<li><strong>Databases:</strong> MongoDB, MySQL, PostgreSQL, Firebase, Redis, DynamoDB</li>
-							<li><strong>Blockchain & Smart Contracts:</strong> Ethereum, Solana, Polkadot, Wormhole, Hyperledger Fabric, Binance Smart Chain (BSC), Cosmos</li>
-							<li><strong>DevOps & Cloud:</strong> Docker, Kubernetes</li>
-							<li><strong>AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, OpenAI APIs, NLP, Computer Vision</li>
+							<li><strong>Blockchain & Smart Contracts:</strong> Ethereum, Solana, Sui, IOTA, Polkadot, Wormhole, Hyperledger Fabric, Binance Smart Chain (BSC), Cosmos</li>
+							<li><strong>Tokenomics & DeFi:</strong> Bonding curve design, liquidity pool engineering, memecoin economics, dynamic trading fees, anti-dump mechanisms</li>
+							<li><strong>Security & Auditing:</strong> Smart contract auditing tools, dSOC (Decentralized Security Operations Center), on-chain/off-chain security workflows, vulnerability detection automation</li>
+							<li><strong>Cross-Chain & Interoperability:</strong> Wormhole protocol, cross-chain liquidity aggregation, Solana-Ethereum bridges, multi-chain payroll systems</li>
+							<li><strong>DevOps & Cloud:</strong> Docker, Kubernetes, CI/CD pipelines</li>
+							<li><strong>AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, OpenAI APIs, AI tokenomics simulation, AI-based smart contract auditing, AI-powered trading bots</li>
 							<li><strong>Testing & QA:</strong> Jest, Mocha, Chai, Cypress, Selenium</li>
 							<li><strong>Tools & Platforms:</strong> Git, GitHub, GitLab, Bitbucket, Jira, Trello, Postman, Figma, Visual Studio Code</li>
-							<li><strong>Web3 Technologies:</strong> Web3.js, Ethers.js, IPFS, Truffle, Hardhat, The Graph</li>
+							<li><strong>Web3 Technologies:</strong> Web3.js, Ethers.js, IPFS, Truffle, Hardhat, Anchor, The Graph</li>
 							<li><strong>Operating Systems:</strong> Linux, macOS, Windows</li>
 							<li><strong>Protocols & Standards:</strong> REST, GraphQL, gRPC, OpenAPI, OAuth, JWT</li>
 						</ul>
@@ -168,6 +204,12 @@ https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are"
 							<li><strong>Solana Sigma Hackathon (2024):</strong> Created a high-performance decentralized exchange (DEX) on the Solana blockchain, optimizing for speed and low transaction costs.</li>
 							<li><strong>Road to Soon Hackathon (2024):</strong> Designed a decentralized supply chain management system, improving transparency and efficiency in logistics and inventory tracking.</li>
 							<li><strong>Solana AI Hackathon (2024):</strong> Developed an AI-powered trading bot for DeFi platforms, utilizing machine learning algorithms to optimize trading strategies and maximize returns.</li>
+							<li><strong>ETN Hackathon:</strong> Developed <em>ETNPump.fun</em>, a next-generation liquidity and memecoin pump environment.</li>
+							<li><strong>Sui Hacker House KL 2025:</strong> Created <em>AuditWarp</em>, a suite of smart contract auditing tools for Sui.</li>
+							<li><strong>Moveathon IOTA APAC:</strong> Built <em>AuditA</em>, a blockchain auditing tool for Move-based smart contracts.</li>
+							<li><strong>Solana Breakout Online Hackathon:</strong> Launched <em>CryptoPayRoll</em> (GitHub), a crypto payroll management system.</li>
+							<li><strong>Sui Overflow 2025:</strong> Delivered <em>SuiAuditWarp</em>, advanced smart contract auditing tools for Sui developers.</li>
+							<li><strong>IOTA Hackathon Malaysia 2025:</strong> Developed <em>dSOC</em> – Decentralized Security Operations Center for blockchain security incident management.</li>
 						</ul>
 					</section>
 					

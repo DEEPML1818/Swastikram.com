@@ -190,4 +190,60 @@
     transform: translateY(-5px) rotate(5deg) scale(1.1);
     filter: drop-shadow(0 10px 20px hsla(158, 64%, 52%, 0.3));
   }
+
+  /* Mobile-specific improvements */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 640px) {
+    .typing-animation {
+      font-size: 0.9rem;
+      animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    .tech-icon-hover:active {
+      transform: translateY(-2px) scale(1.05);
+      filter: drop-shadow(0 5px 10px hsla(158, 64%, 52%, 0.2));
+    }
+
+    .gradient-text {
+      font-size: clamp(2rem, 8vw, 4rem);
+      line-height: 1.1;
+    }
+
+    /* Improve mobile scrolling */
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Better mobile spacing */
+    section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Mobile-friendly button sizing */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Improve mobile typography */
+    .line-clamp-3 {
+      -webkit-line-clamp: 4;
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .typing-animation {
+      font-size: 0.8rem;
+      animation: typing 2.5s steps(35, end), blink-caret 0.75s step-end infinite;
+    }
+
+    .gradient-text {
+      font-size: clamp(1.8rem, 7vw, 3.5rem);
+    }
+  }
 }

@@ -4,16 +4,16 @@ export default function About() {
   return (
     <section id="about" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
-            className="space-y-6"
+            className="space-y-6 px-4 lg:px-0"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text">About Me</h2>
-            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text">About Me</h2>
+            <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               <p>
                 I'm a 16-year-old developer passionate about building transparent and efficient
                 systems that bridge the gap between Web2 and Web3. My journey began at age 6 with
@@ -42,33 +42,35 @@ export default function About() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
               <motion.div
-                className="flex items-center space-x-3 text-primary bg-primary/10 rounded-lg p-4"
+                className="flex items-center space-x-3 text-primary bg-primary/10 rounded-lg p-3 sm:p-4 touch-manipulation"
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <span className="text-2xl">💻</span>
+                <span className="text-xl sm:text-2xl">💻</span>
                 <div>
-                  <div className="font-semibold">First Computer</div>
-                  <div className="text-sm text-muted-foreground">Age 6 - The journey begins</div>
+                  <div className="font-semibold text-sm sm:text-base">First Computer</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Age 6 - The journey begins</div>
                 </div>
               </motion.div>
 
               <motion.div
-                className="flex items-center space-x-3 text-primary bg-primary/10 rounded-lg p-4"
+                className="flex items-center space-x-3 text-primary bg-primary/10 rounded-lg p-3 sm:p-4 touch-manipulation"
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <span className="text-2xl">🚀</span>
+                <span className="text-xl sm:text-2xl">🚀</span>
                 <div>
-                  <div className="font-semibold">Started Coding</div>
-                  <div className="text-sm text-muted-foreground">Age 10 - Building the future</div>
+                  <div className="font-semibold text-sm sm:text-base">Started Coding</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Age 10 - Building the future</div>
                 </div>
               </motion.div>
             </div>
           </motion.div>
 
           <motion.div
-            className="relative"
+            className="relative mt-8 lg:mt-0 px-4 lg:px-0"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -77,7 +79,7 @@ export default function About() {
             <motion.img
               src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
               alt="Abstract blockchain technology visualization"
-              className="rounded-2xl shadow-2xl"
+              className="w-full rounded-2xl shadow-2xl"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             />

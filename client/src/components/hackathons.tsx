@@ -87,18 +87,18 @@ export default function Hackathons() {
     <section id="hackathons" className="py-20 px-6 bg-card/20">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 px-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Hackathon Journey</h2>
-          <p className="text-xl text-muted-foreground mb-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">Hackathon Journey</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground mb-8">
             15+ competitions, multiple wins, and countless innovations in Web3
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -120,7 +120,7 @@ export default function Hackathons() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4">
           {hackathons.map((hackathon, index) => (
             <motion.div
               key={hackathon.name}

@@ -54,17 +54,17 @@ export default function Media() {
     <section id="media" className="py-20 px-6 bg-card/20">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 px-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">As Featured In</h2>
-          <p className="text-xl text-muted-foreground">Media coverage and publications</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">As Featured In</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground">Media coverage and publications</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 px-4">
           {mediaArticles.map((article, index) => (
             <motion.div
               key={article.title}
@@ -82,19 +82,19 @@ export default function Media() {
                   className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <div className="flex items-center mb-3">
-                  <span className="text-primary font-bold text-lg">{article.publication}</span>
+                  <span className="text-primary font-bold text-base sm:text-lg">{article.publication}</span>
                 </div>
-                <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                   {article.title}
                 </h3>
-                <p className="text-muted-foreground mb-4">{article.description}</p>
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{article.description}</p>
                 <motion.a
                   href={article.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary hover:text-primary/80 font-medium"
+                  className="inline-flex items-center text-primary hover:text-primary/80 font-medium text-sm touch-manipulation"
                   whileHover={{ x: 5 }}
                   data-testid={`link-media-${article.title.toLowerCase().replace(/\s+/g, '-')}`}
                 >
@@ -113,20 +113,21 @@ export default function Media() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8 gradient-text">Latest Articles</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-center mb-8 gradient-text px-4">Latest Articles</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-4">
             {blogArticles.map((article, index) => (
               <motion.div
                 key={article.title}
-                className="bg-card rounded-xl p-6 border border-border"
+                className="bg-card rounded-xl p-4 sm:p-6 border border-border touch-manipulation"
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-lg font-bold mb-2">{article.title}</h4>
-                <p className="text-muted-foreground mb-3">{article.description}</p>
+                <h4 className="text-base sm:text-lg font-bold mb-2">{article.title}</h4>
+                <p className="text-muted-foreground mb-3 text-sm leading-relaxed">{article.description}</p>
                 {article.tags && (
                   <p className="text-xs text-secondary/80 mb-4 font-mono bg-secondary/10 rounded px-2 py-1 inline-block">
                     {article.tags}
@@ -136,7 +137,7 @@ export default function Media() {
                   href={article.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 font-medium"
+                  className="text-primary hover:text-primary/80 font-medium text-sm touch-manipulation"
                   whileHover={{ x: 5 }}
                   data-testid={`link-blog-${article.title.toLowerCase().replace(/\s+/g, '-')}`}
                 >

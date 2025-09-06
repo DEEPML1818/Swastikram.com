@@ -66,17 +66,17 @@ export default function Skills() {
     <section className="py-20 px-6 bg-card/20">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 px-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Skills & Technologies</h2>
-          <p className="text-xl text-muted-foreground">Full-stack expertise across Web2, Web3, and AI/ML</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">Skills & Technologies</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground">Full-stack expertise across Web2, Web3, and AI/ML</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mb-12 px-4">
           {Object.entries(techCategories).map(([category, techs], categoryIndex) => (
             <motion.div
               key={category}
@@ -87,7 +87,7 @@ export default function Skills() {
               viewport={{ once: true }}
             >
               <h3 className="text-lg font-bold gradient-text mb-4">{category}</h3>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {techs.map((tech, index) => (
                   <motion.div
                     key={tech.name}
@@ -118,7 +118,7 @@ export default function Skills() {
         >
           <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl p-8 border border-primary/20">
             <h3 className="text-2xl font-bold gradient-text mb-6 text-center">Specialized Expertise</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-3 bg-primary/20 rounded-xl flex items-center justify-center">
                   <span className="text-2xl">🤖</span>
@@ -164,7 +164,7 @@ export default function Skills() {
                 AI-Powered Innovation
               </span>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               <div className="bg-card/50 rounded-xl p-6 border border-blue-500/20">
                 <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-lg flex items-center justify-center">
                   <span className="text-xl">📈</span>

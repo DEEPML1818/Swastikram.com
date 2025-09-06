@@ -1,0 +1,103 @@
+Full Website Prompt
+
+Instruction for AI:
+Create a personal portfolio website UI inspired by davidlangarica.dev
+.
+⚠️ Important: Keep my existing content exactly as it is. Only replicate the design, animations, and flow.
+
+🔑 Design Guidelines
+
+Overall Style: Modern, minimalist, creative portfolio feel.
+
+Color Palette: Dark base (deep navy or black) with one bold accent (emerald green or violet).
+
+Typography: Large, bold typography for section headers. Clean sans-serif for body text.
+
+Animations: Smooth fade-in, slide, and scroll animations. Micro-interactions on hover.
+
+🔗 Layout & Sections
+1. Navigation Bar
+
+Fixed at top, minimal items:
+
+Home
+
+About
+
+Projects
+
+Media
+
+Contact
+
+Always visible, transparent background turning solid on scroll.
+
+2. Hero Section
+
+Full-screen hero with layered bold typography.
+
+Large introduction headline with my name + tagline (keep my content unchanged).
+
+Animated subheading (typing or fade-in).
+
+CTA button: “Explore My Work”.
+
+3. About Me
+
+Minimal copy (use my existing About content).
+
+Add one fun/personal touch (like davidlangarica.dev has with tacos/music).
+
+4. Projects Section
+
+Grid or card layout, each project with:
+
+Title
+
+One-liner description
+
+Thumbnail / screenshot
+
+Button: “View Project” (links to GitHub/demo).
+
+Smooth hover animations on cards.
+
+5. Media & Publications
+
+“As Featured In” section.
+
+Show logos (The Star, etc.) in grayscale style.
+
+Link out to my articles.
+
+6. Skills / Tech Stack
+
+Row of technology icons (Solidity, Rust, Python, React, TensorFlow, etc.).
+
+Animated scroll-in effect.
+
+7. Footer / Contact
+
+Closing friendly line (keep my content).
+
+Contact options: Email, LinkedIn, GitHub.
+
+“Let’s Build Something Together” as a CTA.
+
+✨ Extra Features
+
+Dark theme default.
+
+Smooth scroll transitions between sections.
+
+Mobile responsive (collapsible nav, stacked project cards).
+
+Add a subtle animated background (gradient or particle effect).
+
+Preloader animation (optional, like davidlangarica.dev).
+
+📌 Output Format
+
+Build using Next.js + TailwindCSS + Framer Motion (preferred).
+
+If using no-code, adapt to Framer or Webflow with similar layout & animations.

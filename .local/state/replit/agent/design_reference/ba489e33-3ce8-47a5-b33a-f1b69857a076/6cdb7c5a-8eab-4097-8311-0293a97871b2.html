@@ -1,0 +1,790 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swastik Ram - Blockchain Developer & Full-Stack Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                }
+            },
+            fontFamily: {
+                sans: ["Inter", "system-ui", "sans-serif"],
+            }
+        }
+    };
+    </script>
+    
+    <style>
+        :root {
+            --background: hsl(222 84% 5%);
+            --foreground: hsl(210 40% 98%);
+            --card: hsl(222 84% 8%);
+            --card-foreground: hsl(210 40% 98%);
+            --popover: hsl(222 84% 8%);
+            --popover-foreground: hsl(210 40% 98%);
+            --primary: hsl(158 64% 52%);
+            --primary-foreground: hsl(222 84% 5%);
+            --secondary: hsl(262 83% 58%);
+            --secondary-foreground: hsl(210 40% 98%);
+            --muted: hsl(217 33% 17%);
+            --muted-foreground: hsl(215 20% 65%);
+            --accent: hsl(158 64% 52%);
+            --accent-foreground: hsl(222 84% 5%);
+            --destructive: hsl(0 63% 31%);
+            --destructive-foreground: hsl(210 40% 98%);
+            --border: hsl(217 33% 17%);
+            --input: hsl(217 33% 17%);
+            --ring: hsl(158 64% 52%);
+            --radius: 0.75rem;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, hsl(222 84% 5%) 0%, hsl(230 84% 8%) 100%);
+            min-height: 100vh;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(262 83% 58%) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid hsl(158 64% 52%);
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: hsl(158 64% 52%); }
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background: hsla(222, 84%, 5%, 0.8);
+        }
+
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: hsl(222 84% 5%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid hsl(217 33% 17%);
+            border-top: 3px solid hsl(158 64% 52%);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 10px hsl(158 64% 52%));
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="flex flex-col items-center">
+            <div class="loading-spinner"></div>
+            <p class="text-primary mt-4 font-medium">Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div class="particle-bg">
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-border/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold gradient-text">SR</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary transition-colors duration-200">Home</a>
+                        <a href="#about" class="text-muted-foreground hover:text-primary transition-colors duration-200">About</a>
+                        <a href="#projects" class="text-muted-foreground hover:text-primary transition-colors duration-200">Projects</a>
+                        <a href="#media" class="text-muted-foreground hover:text-primary transition-colors duration-200">Media</a>
+                        <a href="#contact" class="text-muted-foreground hover:text-primary transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-foreground hover:text-primary focus:outline-none" id="mobile-menu-button">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-lg">
+                <a href="#home" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 text-muted-foreground hover:text-primary transition-colors">About</a>
+                <a href="#projects" class="block px-3 py-2 text-muted-foreground hover:text-primary transition-colors">Projects</a>
+                <a href="#media" class="block px-3 py-2 text-muted-foreground hover:text-primary transition-colors">Media</a>
+                <a href="#contact" class="block px-3 py-2 text-muted-foreground hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6">
+                    <span class="block">Swastik</span>
+                    <span class="block gradient-text">Ram</span>
+                </h1>
+                <div class="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+                    <p class="typing-animation">16-year-old blockchain developer building the future of Web3</p>
+                </div>
+                <div class="animate-slide-up delay-1000">
+                    <a href="#projects" class="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+                        Explore My Work
+                        <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
+                <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text">About Me</h2>
+                    <div class="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                        <p>I'm a 16-year-old developer passionate about building transparent and efficient systems. While my primary focus is blockchain development, I also have a strong foundation in web2 technologies.</p>
+                        
+                        <p>I specialize in Solidity, Rust, Golang, and Vyper for building secure, scalable decentralized applications, and I am equally proficient in Python, JavaScript, TypeScript, Ruby, PHP, C, and C++ for traditional web development.</p>
+                        
+                        <p>Beyond the blockchain, I have extensive experience creating dynamic, responsive web applications using modern frameworks like React, Vue.js, and Node.js, while also working with SQL and NoSQL databases like MongoDB and MySQL.</p>
+                        
+                        <p>I'm especially driven by the evolution of the Ethereum Virtual Machine (EVM) and Layer 2 solutions, which I integrate into my projects to build practical, real-world applications.</p>
+                    </div>
+                    
+                    <!-- Fun Personal Touch -->
+                    <div class="flex items-center space-x-2 text-primary">
+                        <span class="text-2xl">🚀</span>
+                        <span class="font-medium">Fun fact: I started coding when I was 12, and blockchain has been my passion since 14!</span>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Abstract blockchain technology image -->
+                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Abstract blockchain technology visualization" class="rounded-2xl shadow-2xl" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills/Tech Stack Section -->
+    <section class="py-20 px-6 bg-card/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Tech Stack</h2>
+                <p class="text-xl text-muted-foreground">Technologies I work with daily</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <!-- Blockchain -->
+                <div class="tech-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">⛓️</span>
+                    </div>
+                    <p class="text-sm font-medium">Solidity</p>
+                </div>
+                
+                <div class="tech-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">🦀</span>
+                    </div>
+                    <p class="text-sm font-medium">Rust</p>
+                </div>
+                
+                <div class="tech-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">🐹</span>
+                    </div>
+                    <p class="text-sm font-medium">Golang</p>
+                </div>
+                
+                <div class="tech-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">⚛️</span>
+                    </div>
+                    <p class="text-sm font-medium">React</p>
+                </div>
+                
+                <div class="tech-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">🐍</span>
+                    </div>
+                    <p class="text-sm font-medium">Python</p>
+                </div>
+                
+                <div class="tech-icon text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">🧠</span>
+                    </div>
+                    <p class="text-sm font-medium">AI/ML</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Featured Projects</h2>
+                <p class="text-xl text-muted-foreground">Building the future of decentralized applications</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: NFTInu -->
+                <div class="project-card bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+                    <!-- Modern developer workspace -->
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" alt="Modern developer workspace with multiple monitors showing code" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">NFTInu</h3>
+                        <p class="text-muted-foreground mb-4">A decentralized platform that lets users rent and access NFTs, such as virtual real estate, gaming items, and digital art.</p>
+                        <a href="https://github.com/DEEPML1818/NFTInu/tree/master" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            View Project 
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Cyberport -->
+                <div class="project-card bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+                    <!-- Cybersecurity visual -->
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" alt="Cybersecurity visualization with network nodes and connections" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Cyberport</h3>
+                        <p class="text-muted-foreground mb-4">Advanced shipping navigation system with weather forecasting and maritime news integration for safe ocean travel.</p>
+                        <a href="https://cyberport.digital/" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            View Project 
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Legal Aid Certification System -->
+                <div class="project-card bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+                    <!-- Blockchain technology abstract -->
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" alt="Abstract blockchain technology with glowing network connections" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Legal Aid Certification System</h3>
+                        <p class="text-muted-foreground mb-4">Decentralized platform providing legal assistance to individuals who cannot afford lawyer fees using blockchain verification.</p>
+                        <a href="https://github.com/DEEPML1818/legal-aid-app" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            View Project 
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: DeFiSyNc -->
+                <div class="project-card bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+                    <!-- Modern developer workspace -->
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" alt="Modern developer workspace with futuristic code displays" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">DeFiSyNc</h3>
+                        <p class="text-muted-foreground mb-4">Cross-chain liquidity aggregation with AI optimization, improving slippage rates and reducing transaction costs.</p>
+                        <a href="https://github.com/DEEPML1818/Cross-chain-Liquidity-Pool-Aggregator-with-AI-Optimization" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            View Project 
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5: NexGuard Insurance -->
+                <div class="project-card bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+                    <!-- Cybersecurity visual -->
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" alt="Cybersecurity concept with digital locks and security elements" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">NexGuard Insurance</h3>
+                        <p class="text-muted-foreground mb-4">Decentralized insurance platform for DeFi users with AI-powered risk assessment and automated claims processing.</p>
+                        <a href="https://github.com/DEEPML1818/NexGuard_Insurance" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            View Project 
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6: MetaTasker -->
+                <div class="project-card bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+                    <!-- Blockchain technology abstract -->
+                    <img src="https://pixabay.com/get/g7e02b96ed813d46a0a1dffd0ff8e3b7796c37e238d6d54a9c7d269ef4d0cdb2faf4d53e3bd694a6795abaeb06bb3ac06c7969b95bed78242c2a26d7e26b1cea9_1280.jpg" alt="Abstract blockchain network with interconnected nodes and data flow" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">MetaTasker</h3>
+                        <p class="text-muted-foreground mb-4">Blockchain-powered platform simplifying on-chain employment and identity management with secure, transparent records.</p>
+                        <a href="https://github.com/DEEPML1818/Process-Implementation-Design-for-Onchain-Employment-and-Identity-Platform" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            View Project 
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://github.com/DEEPML1818" target="_blank" class="inline-flex items-center px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+                    View All Projects on GitHub
+                    <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media & Publications Section -->
+    <section id="media" class="py-20 px-6 bg-card/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">As Featured In</h2>
+                <p class="text-xl text-muted-foreground">Media coverage and publications</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Media Article 1 -->
+                <div class="bg-card rounded-xl overflow-hidden shadow-lg border border-border hover:transform hover:scale-105 transition-all duration-300">
+                    <img src="https://www.swastikram.com/images/media1.jpeg" alt="What hackathons really are article" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-primary font-bold text-lg">The Star</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">What hackathons really are</h3>
+                        <p class="text-muted-foreground mb-4">Exploring the true nature and impact of hackathons in the technology ecosystem.</p>
+                        <a href="https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read Article
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Media Article 2 -->
+                <div class="bg-card rounded-xl overflow-hidden shadow-lg border border-border hover:transform hover:scale-105 transition-all duration-300">
+                    <img src="https://www.swastikram.com/images/media2.jpg" alt="All for one article" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-primary font-bold text-lg">The Star</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">All for one</h3>
+                        <p class="text-muted-foreground mb-4">Collaborative approaches and teamwork in modern technology development.</p>
+                        <a href="https://www.thestar.com.my/news/education/2025/05/04/all-for-one" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read Article
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Media Article 3 -->
+                <div class="bg-card rounded-xl overflow-hidden shadow-lg border border-border hover:transform hover:scale-105 transition-all duration-300">
+                    <img src="https://www.swastikram.com/images/media3.jpeg" alt="Secondary students say yes to ASEAN languages article" class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-300" />
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-primary font-bold text-lg">The Star</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Secondary students say yes to ASEAN languages</h3>
+                        <p class="text-muted-foreground mb-4">The importance of multilingual education in the ASEAN region.</p>
+                        <a href="https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read Article
+                            <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Articles -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center mb-8">Latest Articles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-card rounded-xl p-6 border border-border">
+                        <h4 class="text-lg font-bold mb-2">Building an AI-Powered Honeypot Log Analyzer</h4>
+                        <p class="text-muted-foreground mb-4">From raw logs to compelling security narratives using AI-powered analysis techniques.</p>
+                        <a href="https://medium.com/@deepml1818/building-an-ai-powered-honeypot-log-analyzer-from-raw-logs-to-compelling-security-narratives-fae534fff9e1" target="_blank" class="text-primary hover:text-primary/80 font-medium">Read on Medium →</a>
+                    </div>
+                    
+                    <div class="bg-card rounded-xl p-6 border border-border">
+                        <h4 class="text-lg font-bold mb-2">Stock Prediction Using CNN vs RNN</h4>
+                        <p class="text-muted-foreground mb-4">A comparative analysis of neural networks in financial market predictions.</p>
+                        <a href="https://deepml1818.substack.com/p/stock-buy-sell-hold-prediction-using" target="_blank" class="text-primary hover:text-primary/80 font-medium">Read on Substack →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">Let's Build Something Together</h2>
+            <p class="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+                Ready to create the next big thing in Web3? I'm always excited to collaborate on innovative blockchain projects.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12">
+                <a href="mailto:deepml1818@gmail.com" class="flex flex-col items-center p-6 bg-card rounded-xl border border-border hover:border-primary transition-all duration-300 hover:scale-105">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Email</span>
+                </a>
+                
+                <a href="https://github.com/DEEPML1818" target="_blank" class="flex flex-col items-center p-6 bg-card rounded-xl border border-border hover:border-primary transition-all duration-300 hover:scale-105">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </div>
+                    <span class="font-medium">GitHub</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/mr-landlord-0b7376267/" target="_blank" class="flex flex-col items-center p-6 bg-card rounded-xl border border-border hover:border-primary transition-all duration-300 hover:scale-105">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
+                    <span class="font-medium">LinkedIn</span>
+                </a>
+                
+                <a href="https://x.com/Swastik_Ram" target="_blank" class="flex flex-col items-center p-6 bg-card rounded-xl border border-border hover:border-primary transition-all duration-300 hover:scale-105">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </div>
+                    <span class="font-medium">Twitter</span>
+                </a>
+                
+                <a href="https://www.swastikram.com/Linktree/index.html" target="_blank" class="flex flex-col items-center p-6 bg-card rounded-xl border border-border hover:border-primary transition-all duration-300 hover:scale-105">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-3">
+                        <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Linktree</span>
+                </a>
+            </div>
+            
+            <div class="bg-card/50 rounded-2xl p-8 border border-border">
+                <p class="text-lg text-muted-foreground">
+                    "The future belongs to those who build it. Let's create something extraordinary together."
+                </p>
+                <p class="text-primary font-medium mt-2">- Swastik Ram</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-border">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-muted-foreground">© 2024 Swastik Ram. Building the future of Web3, one block at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Preloader
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const preloader = document.getElementById('preloader');
+                    preloader.classList.add('fade-out');
+                }, 1000);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('backdrop-blur-lg', 'bg-background/80');
+                } else {
+                    navbar.classList.remove('backdrop-blur-lg', 'bg-background/80');
+                }
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for animations
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Particle background effect
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const particles = [];
+            const particleCount = 50;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 2 + 1;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(158, 64%, 52%, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            // Typing animation for hero section
+            setTimeout(() => {
+                const typingElement = document.querySelector('.typing-animation');
+                if (typingElement) {
+                    typingElement.style.animation = 'none';
+                    typingElement.style.borderRight = 'none';
+                }
+            }, 4000);
+        })();
+    </script>
+</body>
+</html>

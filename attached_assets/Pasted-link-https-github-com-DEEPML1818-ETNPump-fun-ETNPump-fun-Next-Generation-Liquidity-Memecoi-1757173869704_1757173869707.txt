@@ -1,0 +1,85 @@
+link : https://github.com/DEEPML1818/ETNPump.fun
+
+ETNPump.fun: Next-Generation Liquidity & Memecoin Pump Environment
+
+Welcome to the ETNPump.fun project repository. This project represents an innovative approach to decentralized token issuance and liquidity management, specifically engineered to redefine the pump environment for ETN and memecoins. The system has been developed, audited, deployed, and is now live on the blockchain. This document provides an in-depth explanation of the functions, features, and technical details from a development perspective.
+
+Table of Contents
+Introduction
+Project Overview
+Key Components
+FeeVault
+PumpFunFactory
+PumpFunToken
+PumpFunRouter
+Innovative Features & Differentiators
+Technical Architecture
+Bonding Curve & Pricing Mechanism
+Security & Liquidity Management
+Future Impact on Memecoin Trading
+Getting Started
+Contributing
+License
+Introduction
+ETNPump.fun is a decentralized platform built on Electroneum that transforms token creation, liquidity provisioning, and trading dynamics. It combines a robust, factory-based deployment process with a sophisticated liquidity pool mechanism that leverages a unique bonding curve. Designed with a focus on sustainability and security, ETNPump.fun is set to change how memecoins are traded and how liquidity is managed in the market.
+
+link : https://github.com/DEEPML1818/SuiSend
+
+SuiSend
+
+🔒 SuiSend – Offline-First NFC Crypto Wallet (Powered by Sui)
+SuiSend is an offline-first crypto wallet system for Android and iOS, built using React Native and NTAG215 NFC cards. It allows users to store Sui blockchain keypairs and coin objects directly on NFC cards, enabling secure, offline transaction signing and deferred syncing with the blockchain.
+
+Think “Touch 'n Go” meets Web3.
+
+🚀 Features
+📲 NFC Card Wallets: Sui private key, coin object IDs, balances, and pending transactions are stored directly on NFC cards.
+🔐 Offline Signing: Tap-to-sign transactions offline, with TTL, reservation, and locking enforcement.
+🌐 Deferred Sync: Transactions dry-run validated and submitted when back online.
+📛 Alias System: Register human-readable aliases for NFC wallets via the on-chain CardRegistry Move contract.
+📉 Pyth Price Feed: Optional integration to display real-time SUI/USD price.
+🌉 Wormhole Integration: Optional bridge to import EVM assets to fund wallet balances.
+
+
+
+link : https://github.com/DEEPML1818/AlgoTrader
+
+AlgoTrader: The Future of Algorithmic Trading
+
+AlgoTrader is a cutting-edge, end-to-end modular trading platform designed to empower traders with advanced algorithmic capabilities, robust risk management, and a secure, extensible plugin ecosystem. Built with TypeScript, React (Vite), and Node.js, AlgoTrader provides a comprehensive environment for developing, backtesting, deploying, and monitoring automated trading strategies.
+
+
+
+link : https://github.com/DEEPML1818/AI-vs-AI
+
+
+🤖 Ai-vs-Ai: API-Level AI Warfare Simulation
+
+Welcome to Ai-vs-Ai, a real-world Python-based simulation that pits two LLMs against each other in a red-team (attacker) vs blue-team (defender) scenario.
+
+This project demonstrates adversarial interactions between two AI agents over mock API endpoints — simulating prompt injection attacks, defensive filtering, and LLM strategy warfare.
+
+Built using Python and Gemini 2.5 Flash, this tool is designed for cybersecurity researchers, AI prompt engineers, red-teamers, and anyone curious about adversarial AI logic.
+
+🎯 Project Objective
+Explore how prompt injection and manipulation can bypass safeguards.
+Build a sandbox where AI fights AI in a closed simulation loop.
+Evaluate both attack creativity and defense robustness.
+Encourage community collaboration and experimentation in AI-based cybersecurity research.
+⚙️ Key Features
+✅ Gemini 2.5 Flash model via google-generativeai
+✅ AI attacker: generates adversarial prompts (injection, jailbreaking, obfuscation)
+✅ AI defender: detects, filters, classifies, and mitigates attacks
+✅ API-style simulation between red-team and blue-team
+✅ Configurable battle rounds and logging
+✅ Easily extensible: plug in other models, APIs, or attack modules
+
+
+
+link : https://github.com/DEEPML1818/Decentralized-SOC
+
+dSOC - Decentralized Security Operations Center
+
+Overview
+The dSOC project is a Decentralized Security Operations Center platform built on IOTA and EVM-compatible blockchain technologies. Its core purpose is to provide a robust, decentralized workflow for managing security incidents and tickets with role-based access for security analysts, clients, and certifiers. The platform aims to leverage blockchain for immutable data storage, transparent incident management, and automated reward distribution, addressing the need for enhanced security and trust in incident response. Key capabilities include IOTA and MetaMask wallet integration, decentralized data storage via IPFS, smart contract interactions for ticket creation and validation, and an AI-powered analysis component for incident reporting and vulnerability assessment. The vision is to offer a comprehensive, decentralized solution for enterprise security operations.
+

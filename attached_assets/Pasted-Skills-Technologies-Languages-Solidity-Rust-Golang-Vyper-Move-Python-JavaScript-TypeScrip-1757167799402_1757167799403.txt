@@ -1,0 +1,31 @@
+Skills & Technologies
+Languages: Solidity, Rust, Golang, Vyper, Move, Python, JavaScript, TypeScript, C++, Ruby, PHP, Java, Swift
+Frameworks & Libraries: React, Vue.js, Node.js, Express, Angular, Next.js, Nuxt.js, Tailwind CSS, Bootstrap, jQuery, Chakra UI, Radix UI
+Databases: MongoDB, MySQL, PostgreSQL, Firebase, Redis, DynamoDB
+Blockchain & Smart Contracts: Ethereum, Solana, Sui, IOTA, Polkadot, Wormhole, Hyperledger Fabric, Binance Smart Chain (BSC), Cosmos
+Tokenomics & DeFi: Bonding curve design, liquidity pool engineering, memecoin economics, dynamic trading fees, anti-dump mechanisms
+Security & Auditing: Smart contract auditing tools, dSOC (Decentralized Security Operations Center), on-chain/off-chain security workflows, vulnerability detection automation
+Cross-Chain & Interoperability: Wormhole protocol, cross-chain liquidity aggregation, Solana-Ethereum bridges, multi-chain payroll systems
+DevOps & Cloud: Docker, Kubernetes, CI/CD pipelines
+AI & Machine Learning: TensorFlow, PyTorch, Scikit-learn, OpenAI APIs, AI tokenomics simulation, AI-based smart contract auditing, AI-powered trading bots
+Testing & QA: Jest, Mocha, Chai, Cypress, Selenium
+Tools & Platforms: Git, GitHub, GitLab, Bitbucket, Jira, Trello, Postman, Figma, Visual Studio Code
+Web3 Technologies: Web3.js, Ethers.js, IPFS, Truffle, Hardhat, Anchor, The Graph
+Operating Systems: Linux, macOS, Windows
+Protocols & Standards: REST, GraphQL, gRPC, OpenAPI, OAuth, JWT
+Hackathons & Competitions
+ETHKL24 (2024): Secured bounties for innovative blockchain solutions and won a side prize for creating a Layer 2 scaling application using Scroll, ICP, and Worldcoin technology.
+Base Chain Hackathon (2024): Won a side prize for developing an innovative solution leveraging the Base chain, focusing on scalability and optimizing decentralized application performance.
+Solana Wormhole Hackathon (2024): Built a cross-chain asset transfer tool leveraging the Wormhole protocol, enhancing interoperability between Solana and Ethereum networks.
+Colosseum Codex: Radar Hackathon (2024): Developed a decentralized data aggregation platform for real-time analytics, focusing on scalability and transparency in DeFi applications.
+My Hackathon Kohort 1 (2024): Participated in designing a Legal Aid Certification System, focusing on integrating automation with user-friendly interfaces to improve access to legal support.
+My Hackathon Kohort 2 (2024): Developed a decentralized identity management system, enhancing security and privacy for users by leveraging blockchain technology.
+Solana Sigma Hackathon (2024): Created a high-performance decentralized exchange (DEX) on the Solana blockchain, optimizing for speed and low transaction costs.
+Road to Soon Hackathon (2024): Designed a decentralized supply chain management system, improving transparency and efficiency in logistics and inventory tracking.
+Solana AI Hackathon (2024): Developed an AI-powered trading bot for DeFi platforms, utilizing machine learning algorithms to optimize trading strategies and maximize returns.
+ETN Hackathon: Developed ETNPump.fun, a next-generation liquidity and memecoin pump environment.
+Sui Hacker House KL 2025: Created AuditWarp, a suite of smart contract auditing tools for Sui.
+Moveathon IOTA APAC: Built AuditA, a blockchain auditing tool for Move-based smart contracts.
+Solana Breakout Online Hackathon: Launched CryptoPayRoll (GitHub), a crypto payroll management system.
+Sui Overflow 2025: Delivered SuiAuditWarp, advanced smart contract auditing tools for Sui developers.
+IOTA Hackathon Malaysia 2025: Developed dSOC – Decentralized Security Operations Center for blockchain security incident management.

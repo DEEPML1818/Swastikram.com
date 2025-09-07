@@ -7,32 +7,34 @@ export default function Media() {
       title: "What hackathons really are",
       description: "Exploring the true nature and impact of hackathons in the technology ecosystem.",
       publication: "The Star",
-      image: "https://www.swastikram.com/images/media1.jpeg",
+      image: "./media1.jpeg",
       link: "https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are",
     },
     {
       title: "All for one",
       description: "Collaborative approaches and teamwork in modern technology development.",
       publication: "The Star",
-      image: "https://www.swastikram.com/images/media2.jpg",
+      image: "./media2.jpg",
       link: "https://www.thestar.com.my/news/education/2025/05/04/all-for-one",
     },
     {
       title: "Secondary students say yes to ASEAN languages",
       description: "The importance of multilingual education in the ASEAN region.",
       publication: "The Star",
-      image: "https://www.swastikram.com/images/media3.jpeg",
+      image: "./media3.jpeg",
       link: "https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages",
     },
   ];
 
   const blogArticles = [
     {
-      title: "Building an AI-Powered Honeypot Log Analyzer",
+      title: "Building an AI-Powered Honeypot Log Analyzer: From Raw Logs to Compelling Security Narratives",
       description: "Transforming raw cybersecurity logs into compelling security narratives through advanced AI analysis and machine learning techniques.",
       platform: "Medium",
       link: "https://medium.com/@deepml1818/building-an-ai-powered-honeypot-log-analyzer-from-raw-logs-to-compelling-security-narratives-fae534fff9e1",
       tags: "AI • Cybersecurity • Python",
+      image: "https://cdn-images-1.medium.com/max/984/1*MsVPul6e39chcslv4ej_Ng.png",
+      pubDate: "August 13, 2025",
     },
     {
       title: "The Digital Dojo: AI-Powered Python Cyber Ranges",
@@ -40,6 +42,8 @@ export default function Media() {
       platform: "Medium", 
       link: "https://medium.com/@deepml1818/the-digital-dojo-mastering-offensive-security-with-ai-powered-python-cyber-ranges-980ea317d4f9",
       tags: "AI • Security • Python",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+      pubDate: "Recent",
     },
     {
       title: "Stock Buy-Sell-Hold Prediction Using CNN",
@@ -47,6 +51,8 @@ export default function Media() {
       platform: "Substack",
       link: "https://deepml1818.substack.com/p/stock-buy-sell-hold-prediction-using",
       tags: "ML • Finance • TensorFlow",
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+      pubDate: "Recent",
     },
   ];
 
@@ -114,11 +120,11 @@ export default function Media() {
           viewport={{ once: true }}
         >
           <h3 className="text-xl sm:text-2xl font-bold text-center mb-8 gradient-text px-4">Latest Articles</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
             {blogArticles.map((article, index) => (
               <motion.div
                 key={article.title}
-                className="bg-card rounded-xl p-4 sm:p-6 border border-border touch-manipulation"
+                className="bg-card rounded-xl overflow-hidden shadow-lg border border-border group touch-manipulation"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}
@@ -126,23 +132,45 @@ export default function Media() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-base sm:text-lg font-bold mb-2">{article.title}</h4>
-                <p className="text-muted-foreground mb-3 text-sm leading-relaxed">{article.description}</p>
-                {article.tags && (
-                  <p className="text-xs text-secondary/80 mb-4 font-mono bg-secondary/10 rounded px-2 py-1 inline-block">
-                    {article.tags}
-                  </p>
+                {article.image && (
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-2 right-2">
+                      <span className="bg-primary/90 text-primary-foreground px-2 py-1 rounded text-xs font-medium">
+                        {article.platform}
+                      </span>
+                    </div>
+                  </div>
                 )}
-                <motion.a
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 font-medium text-sm touch-manipulation"
-                  whileHover={{ x: 5 }}
-                  data-testid={`link-blog-${article.title.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  Read on {article.platform} →
-                </motion.a>
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-muted-foreground bg-muted/20 rounded px-2 py-1">
+                      {article.pubDate}
+                    </span>
+                  </div>
+                  <h4 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">{article.title}</h4>
+                  <p className="text-muted-foreground mb-3 text-sm leading-relaxed line-clamp-3">{article.description}</p>
+                  {article.tags && (
+                    <p className="text-xs text-secondary/80 mb-4 font-mono bg-secondary/10 rounded px-2 py-1 inline-block">
+                      {article.tags}
+                    </p>
+                  )}
+                  <motion.a
+                    href={article.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-primary hover:text-primary/80 font-medium text-sm touch-manipulation"
+                    whileHover={{ x: 5 }}
+                    data-testid={`link-blog-${article.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    Read Article
+                    <ExternalLink className="ml-1 h-4 w-4" />
+                  </motion.a>
+                </div>
               </motion.div>
             ))}
           </div>

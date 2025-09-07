@@ -1,13 +1,12 @@
-"use client"; // remove this line if you are NOT inside Next.js 13+ App Router
-
+// src/components/Media.tsx
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+
+// ✅ Local images must sit in src/components (or adjust path)
 import media1 from "./media1.jpeg";
 import media2 from "./media2.jpg";
 import media3 from "./media3.jpeg";
-
-
 
 type MediumPost = {
   title: string;
@@ -20,34 +19,34 @@ type MediumPost = {
 };
 
 export default function Media() {
-  // Hard-coded local press articles
+  /** Static press clippings */
   const mediaArticles = [
-  {
-    title: "What hackathons really are",
-    description: "Exploring the true nature and impact of hackathons.",
-    publication: "The Star",
-    image: media1,
-    link: "https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are",
-  },
-  {
-    title: "All for one",
-    description: "Collaborative approaches and teamwork.",
-    publication: "The Star",
-    image: media2,
-    link: "https://www.thestar.com.my/news/education/2025/05/04/all-for-one",
-  },
-  {
-    title: "Secondary students say yes to ASEAN languages",
-    description: "The importance of multilingual education in ASEAN.",
-    publication: "The Star",
-    image: media3,
-    link: "https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages",
-  },
-];
+    {
+      title: "What hackathons really are",
+      description: "Exploring the true nature and impact of hackathons.",
+      publication: "The Star",
+      image: media1,
+      link: "https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are",
+    },
+    {
+      title: "All for one",
+      description: "Collaborative approaches and teamwork.",
+      publication: "The Star",
+      image: media2,
+      link: "https://www.thestar.com.my/news/education/2025/05/04/all-for-one",
+    },
+    {
+      title: "Secondary students say yes to ASEAN languages",
+      description: "The importance of multilingual education in ASEAN.",
+      publication: "The Star",
+      image: media3,
+      link: "https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages",
+    },
+  ];
 
   const [posts, setPosts] = useState<MediumPost[]>([]);
 
-  // Fetch Medium RSS in the browser
+  /** Medium RSS → JSON via rss2json */
   useEffect(() => {
     (async () => {
       try {
@@ -70,7 +69,9 @@ export default function Media() {
             ? item.categories.join(" • ")
             : "",
         }));
-        setPosts(mapped);
+
+        // clamp to first 12
+        setPosts(mapped.slice(0, 9));
       } catch (err) {
         console.error("RSS fetch error:", err);
       }
@@ -80,7 +81,7 @@ export default function Media() {
   return (
     <section id="media" className="py-20 px-6 bg-card/20">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+        {/* Section Header */}
         <motion.div
           className="text-center mb-12 px-4"
           initial={{ opacity: 0, y: 30 }}

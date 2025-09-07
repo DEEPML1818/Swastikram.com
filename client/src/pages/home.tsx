@@ -38,7 +38,7 @@ export default function Home() {
       <footer className="py-8 px-6 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-muted-foreground">
-            © 2024 Swastik Ram. Building the future of Web3, one block at a time.
+            © 2025 Swastik Ram. Building the future of Web3, one block at a time.
           </p>
         </div>
       </footer>

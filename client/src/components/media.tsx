@@ -1,77 +1,86 @@
-// app/components/Media.tsx (or wherever you keep it)
-import Image from "next/image";
+"use client"; // remove this line if you are NOT inside Next.js 13+ App Router
+
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import media1 from "./media1.jpeg";
+import media2 from "./media2.jpg";
+import media3 from "./media3.jpeg";
+
+
+
+type MediumPost = {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+  image?: string;
+  platform: string;
+  tags?: string;
+};
 
 export default function Media() {
+  // Hard-coded local press articles
   const mediaArticles = [
-    {
-      title: "What hackathons really are",
-      description:
-        "Exploring the true nature and impact of hackathons in the technology ecosystem.",
-      publication: "The Star",
-      image: "/media1.jpeg", // lives in /public
-      link: "https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are",
-    },
-    {
-      title: "All for one",
-      description:
-        "Collaborative approaches and teamwork in modern technology development.",
-      publication: "The Star",
-      image: "/media2.jpg",
-      link: "https://www.thestar.com.my/news/education/2025/05/04/all-for-one",
-    },
-    {
-      title: "Secondary students say yes to ASEAN languages",
-      description:
-        "The importance of multilingual education in the ASEAN region.",
-      publication: "The Star",
-      image: "/media3.jpeg",
-      link: "https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages",
-    },
-  ];
+  {
+    title: "What hackathons really are",
+    description: "Exploring the true nature and impact of hackathons.",
+    publication: "The Star",
+    image: media1,
+    link: "https://www.thestar.com.my/news/education/2025/02/09/what-hackathons-really-are",
+  },
+  {
+    title: "All for one",
+    description: "Collaborative approaches and teamwork.",
+    publication: "The Star",
+    image: media2,
+    link: "https://www.thestar.com.my/news/education/2025/05/04/all-for-one",
+  },
+  {
+    title: "Secondary students say yes to ASEAN languages",
+    description: "The importance of multilingual education in ASEAN.",
+    publication: "The Star",
+    image: media3,
+    link: "https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages",
+  },
+];
 
-  const blogArticles = [
-    {
-      title:
-        "Building an AI-Powered Honeypot Log Analyzer: From Raw Logs to Compelling Security Narratives",
-      description:
-        "Transforming raw cybersecurity logs into compelling security narratives through advanced AI analysis and machine learning techniques.",
-      platform: "Medium",
-      link: "https://medium.com/@deepml1818/building-an-ai-powered-honeypot-log-analyzer-from-raw-logs-to-compelling-security-narratives-fae534fff9e1",
-      tags: "AI • Cybersecurity • Python",
-      image:
-        "https://cdn-images-1.medium.com/max/984/1*MsVPul6e39chcslv4ej_Ng.png",
-      pubDate: "August 13, 2025",
-    },
-    {
-      title: "The Digital Dojo: AI-Powered Python Cyber Ranges",
-      description:
-        "Mastering offensive security through artificial intelligence and automated penetration testing environments.",
-      platform: "Medium",
-      link: "https://medium.com/@deepml1818/the-digital-dojo-mastering-offensive-security-with-ai-powered-python-cyber-ranges-980ea317d4f9",
-      tags: "AI • Security • Python",
-      image:
-        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      pubDate: "Recent",
-    },
-    {
-      title: "Stock Buy-Sell-Hold Prediction Using CNN",
-      description:
-        "Deep dive into convolutional neural networks versus recurrent neural networks for financial market prediction and algorithmic trading.",
-      platform: "Substack",
-      link: "https://deepml1818.substack.com/p/stock-buy-sell-hold-prediction-using",
-      tags: "ML • Finance • TensorFlow",
-      image:
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-      pubDate: "Recent",
-    },
-  ];
+  const [posts, setPosts] = useState<MediumPost[]>([]);
+
+  // Fetch Medium RSS in the browser
+  useEffect(() => {
+    (async () => {
+      try {
+        const rssUrl = "https://medium.com/feed/@deepml1818";
+        const response = await fetch(
+          `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+            rssUrl
+          )}`
+        );
+        const data = await response.json();
+
+        const mapped: MediumPost[] = data.items.map((item: any) => ({
+          title: item.title,
+          link: item.link,
+          pubDate: item.pubDate,
+          description: item.description?.replace(/<[^>]+>/g, "").slice(0, 200),
+          image: item.thumbnail,
+          platform: "Medium",
+          tags: Array.isArray(item.categories)
+            ? item.categories.join(" • ")
+            : "",
+        }));
+        setPosts(mapped);
+      } catch (err) {
+        console.error("RSS fetch error:", err);
+      }
+    })();
+  }, []);
 
   return (
     <section id="media" className="py-20 px-6 bg-card/20">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           className="text-center mb-12 px-4"
           initial={{ opacity: 0, y: 30 }}
@@ -87,7 +96,7 @@ export default function Media() {
           </p>
         </motion.div>
 
-        {/* Media Articles */}
+        {/* Static Articles */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 px-4">
           {mediaArticles.map((article, index) => (
             <motion.div
@@ -99,13 +108,11 @@ export default function Media() {
               whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
             >
-              <div className="relative w-full h-48">
-                <Image
+              <div className="relative w-full h-48 overflow-hidden">
+                <img
                   src={article.image}
                   alt={article.title}
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
               <div className="p-4 sm:p-6">
@@ -133,7 +140,7 @@ export default function Media() {
           ))}
         </div>
 
-        {/* Blog Articles */}
+        {/* Medium Feed */}
         <motion.div
           className="mt-16"
           initial={{ opacity: 0, y: 30 }}
@@ -142,12 +149,13 @@ export default function Media() {
           viewport={{ once: true }}
         >
           <h3 className="text-xl sm:text-2xl font-bold text-center mb-8 gradient-text px-4">
-            Latest Articles
+            Latest on Medium
           </h3>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
-            {blogArticles.map((article, index) => (
+            {posts.map((article, index) => (
               <motion.div
-                key={article.title}
+                key={article.link}
                 className="bg-card rounded-xl overflow-hidden shadow-lg border border-border group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -157,13 +165,11 @@ export default function Media() {
                 viewport={{ once: true }}
               >
                 {article.image && (
-                  <div className="relative w-full h-40 sm:h-48">
-                    <Image
+                  <div className="relative w-full h-40 sm:h-48 overflow-hidden">
+                    <img
                       src={article.image}
                       alt={article.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-2 right-2">
                       <span className="bg-primary/90 text-primary-foreground px-2 py-1 rounded text-xs font-medium">

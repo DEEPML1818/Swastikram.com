@@ -42,6 +42,9 @@ export default function Media() {
       image: media3,
       link: "https://www.thestar.com.my/news/nation/2025/05/01/secondary-students-say-yes-to-asean-languages",
     },
+    {
+      
+    },
   ];
 
   const [posts, setPosts] = useState<MediumPost[]>([]);

@@ -17,7 +17,7 @@ export default function Contact() {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/in/mr-landlord-0b7376267/",
+      href: "https://www.linkedin.com/in/swastikram/",
       icon: Linkedin,
       color: "text-blue-600",
     },

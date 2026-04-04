@@ -1,0 +1,115 @@
+---
+import Background from '../components/Background.astro';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "16-year-old developer passionate about building transparent and efficient systems across Web2, Web3, and AI/ML." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- SEO / Metadata -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Swastik Ram, Blockchain Architect, AI Engineer, Full-Stack Developer, Smart Contract Auditor, Web3 Developer Malaysia, ETHKL Winner, Sui Developer, Solana AI, Decentralized Systems" />
+		<meta name="author" content="Swastik Ram" />
+		<link rel="canonical" href="https://www.swastikram.com/" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- JSON-LD Structured Data for Person -->
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Swastik Ram",
+				"url": "https://www.swastikram.com",
+				"image": "https://www.swastikram.com/og-image.jpg",
+				"jobTitle": "Blockchain Architect & AI Engineer",
+				"description": "16-year-old system architect with 6+ years of logic and 15+ international hackathon victories. Specializing in Web3 infrastructure and intelligent systems.",
+				"sameAs": [
+					"https://github.com/swastikram",
+					"https://linkedin.com/in/swastikram",
+					"https://medium.com/@swastikram"
+				],
+				"knowsAbout": ["Blockchain Technology", "Artificial Intelligence", "Smart Contract Auditing", "DeFi", "Move", "Solana", "EVM"],
+				"award": ["ETHKL24 Prize Winner", "IOTA Hackathon Malaysia Winner", "Sui Hacker House Award"]
+			}
+		</script>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.swastikram.com/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.jpg" />
+
+		<!-- Twitter Card -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://www.swastikram.com/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="/twitter-card.jpg" />
+
+		<!-- Robots -->
+		<meta name="robots" content="index, follow" />
+	</head>
+	<body class="bg-[#060608] cursor-none overflow-x-hidden">
+		<div id="neural-reticle" class="fixed top-0 left-0 w-8 h-8 border border-primary/40 rounded-full pointer-events-none z-[1000] -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out hidden md:block mix-blend-difference">
+			<div class="absolute inset-0 border border-primary/10 rounded-full scale-150 animate-ping"></div>
+			<div class="absolute inset-x-0 top-1/2 h-px bg-primary/20 -translate-y-1/2 scale-x-150"></div>
+			<div class="absolute inset-y-0 left-1/2 w-px bg-primary/20 -translate-x-1/2 scale-y-150"></div>
+		</div>
+
+		<Background />
+		<slot />
+
+		<script is:inline>
+			const reticle = document.getElementById('neural-reticle');
+			let mouseX = 0, mouseY = 0;
+			let reticleX = 0, reticleY = 0;
+
+			document.addEventListener('mousemove', (e) => {
+				mouseX = e.clientX;
+				mouseY = e.clientY;
+			});
+
+			function animate() {
+				reticleX += (mouseX - reticleX) * 0.15;
+				reticleY += (mouseY - reticleY) * 0.15;
+				
+				if (reticle) {
+					reticle.style.transform = `translate(${reticleX}px, ${reticleY}px)`;
+				}
+				requestAnimationFrame(animate);
+			}
+			animate();
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	/* Allow standard layout styles while deferring theme to global.css */
+	html, body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		background: #060608; 
+		scroll-behavior: smooth;
+	}
+
+	* {
+		cursor: none !important;
+	}
+	
+	@media (max-width: 768px) {
+		* { cursor: auto !important; }
+	}
+</style>

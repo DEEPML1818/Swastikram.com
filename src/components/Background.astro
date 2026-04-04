@@ -1,0 +1,90 @@
+<div class="fixed inset-0 -z-30 bg-[#060608] overflow-hidden pointer-events-none">
+  {/* The Neural Particle Canvas */}
+  <canvas id="neural-canvas" class="absolute inset-0 opacity-40"></canvas>
+  
+  {/* Hud Grid & Scanlines */}
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] bg-[length:100%_4px,3px_100%] pointer-events-none opacity-20"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.4)_100%)]"></div>
+  
+  {/* Floating Technical HUD Metadata Clusters */}
+  <div class="absolute top-20 right-10 flex flex-col items-end opacity-10 font-mono text-[8px] text-primary space-y-1 select-none">
+    <span>SYSTEM_NODE: ARCHITECT_V1</span>
+    <span>ENCRYPTION: AES_256_ACTIVE</span>
+    <span>STATUS: NEURAL_INTERFACE_OK</span>
+    <span class="animate-pulse">● SEARCHING_FOR_LOGIC</span>
+  </div>
+  
+  <div class="absolute bottom-20 left-10 flex flex-col opacity-10 font-mono text-[8px] text-secondary space-y-1 select-none">
+    <span>LATENCY: 4.2ms</span>
+    <span>UPTIME: 10Y_EXPERIENCE</span>
+    <span>X_COORDINATE: REDACTED</span>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('neural-canvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d');
+  
+  let particles: any[] = [];
+  let w: number, h: number;
+  
+  function init() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    particles = [];
+    for (let i = 0; i < 120; i++) {
+        particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            size: Math.random() * 2 + 0.5
+        });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'hsla(263, 70%, 50%, 0.5)';
+    ctx.strokeStyle = 'hsla(190, 90%, 50%, 0.1)';
+    ctx.lineWidth = 0.5;
+
+    particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 150) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+        }
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', init);
+  init();
+  draw();
+</script>
+
+<style>
+  #neural-canvas {
+    filter: blur(0.5px);
+  }
+</style>

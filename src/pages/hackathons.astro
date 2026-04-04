@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/navigation';
+import HackathonsComponent from '../components/hackathons';
+
+const title = "Hackathon Ledger | Swastik Ram";
+const description = "A high-density record of 15+ international hackathon physical and virtual victories by Swastik Ram, including ETHKL and Toyota GR.";
+---
+
+<Layout title={title} description={description}>
+	<Navigation client:load />
+	<main class="pt-20">
+		<HackathonsComponent client:load />
+	</main>
+</Layout>

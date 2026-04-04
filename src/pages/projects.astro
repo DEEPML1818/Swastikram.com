@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/navigation';
+import ProjectsComponent from '../components/projects';
+
+// Fetch Collections
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const title = "Professional Projects & Architecture | Swastik Ram";
+const description = "Explore the registry of deployed protocols, including CashAPI (Agentic Micropayments) and GR Race Guardian, engineered by Swastik Ram.";
+---
+
+<Layout title={title} description={description}>
+	<Navigation client:load />
+	<main class="pt-20">
+		<ProjectsComponent client:load initialProjects={sortedProjects.map(p => p.data)} />
+	</main>
+</Layout>

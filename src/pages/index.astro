@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/navigation';
+import Hero from '../components/hero';
+import Dossier from '../components/dossier';
+import Skills from '../components/skills';
+import Projects from '../components/projects';
+import Media from '../components/media';
+import Hackathons from '../components/hackathons';
+import Articles from '../components/articles';
+import Contact from '../components/contact';
+
+// Fetch Collections
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const pressArticles = await getCollection('media');
+const sortedPress = pressArticles.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+// Metadata
+const title = "Swastik Ram — System Architect & AI Engineer";
+const description = "16-year-old system architect with a decade of logic, 15+ international hackathon victories, and Toyota GR partnerships. Engineering the future across AI and Web3.";
+---
+
+<Layout title={title} description={description}>
+	<Navigation client:load />
+	<main>
+		<Hero client:load />
+		<Dossier client:visible />
+		<Skills client:visible />
+		<Projects client:visible initialProjects={sortedProjects.map(p => p.data)} />
+		<Hackathons client:visible />
+		<Articles client:visible />
+		<Media client:visible initialMedia={sortedPress.map(p => p.data)} />
+		<Contact client:visible />
+		
+		<footer class="py-20 relative overflow-hidden bg-black/60 backdrop-blur-3xl border-t border-white/5">
+			<div class="container mx-auto px-6">
+				<div className="grid md:grid-cols-3 gap-12 mb-16 items-center">
+					<div className="flex flex-col items-center md:items-start gap-4">
+						<span className="text-3xl font-black text-white italic tracking-tighter uppercase">Swastik <span className="text-primary italic">Ram.</span></span>
+						<p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">© _SYS_ARCH_2026_ // ALL_PROTOCOLS_RESERVED</p>
+					</div>
+
+					<div className="flex flex-col items-center gap-6">
+						<div className="flex gap-1">
+							{[...Array(8)].map((_, i) => (
+								<div key={i} className={`w-1 h-4 bg-primary/${(i + 1) * 10} rounded-full animate-pulse transition-all`} />
+							))}
+						</div>
+						<span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">Neural_Link_Stable</span>
+					</div>
+
+					<div className="hud-metadata text-right hidden md:block">
+						<div className="mb-2 uppercase">System_Epoch_0x992..1A</div>
+						<div className="flex items-center justify-end gap-2 text-primary">
+							<span className="animate-pulse">●</span>
+							<span className="uppercase">Node: SELANGOR_MY_ARCH</span>
+						</div>
+					</div>
+				</div>
+
+				<div className="text-center opacity-10">
+					<span className="text-[8px] font-mono whitespace-nowrap">01000001 01010010 01000011 01001000 01001001 01010100 01000101 01000011 01010100</span>
+				</div>
+			</div>
+		</footer>
+	</main>
+</Layout>
+
+<script>
+	// Handle any client-side specific global logic if needed
+</script>

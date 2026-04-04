@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/navigation';
+import ArticlesComponent from '../components/articles';
+
+const title = "Technical Blog & Thought Leadership | Swastik Ram";
+const description = "Read technical deep-dives into LLM security red teaming, Quantum computing vs Bitcoin, and the HTTP 402 AI Agent economy by Swastik Ram.";
+---
+
+<Layout title={title} description={description}>
+	<Navigation client:load />
+	<main class="pt-20">
+		<ArticlesComponent client:load />
+	</main>
+</Layout>

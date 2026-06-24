@@ -5,9 +5,20 @@ import '../styles/global.css';
 interface Props {
 	title: string;
 	description?: string;
+	/** Absolute URL of the OG image. Defaults to the site-wide og-image.png */
+	ogImage?: string;
+	/** Canonical page URL. Defaults to the current page's URL. */
+	pageUrl?: string;
 }
 
-const { title, description = "16-year-old developer passionate about building transparent and efficient systems across Web2, Web3, and AI/ML." } = Astro.props;
+const SITE_URL = "https://www.swastikram.com";
+
+const {
+	title,
+	description = "16-year-old system architect with a decade of logic, 15+ international hackathon victories, and Toyota GR partnerships. Engineering the future across AI and Web3.",
+	ogImage = `${SITE_URL}/og-image.png`,
+	pageUrl = `${SITE_URL}${Astro.url.pathname}`,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +32,7 @@ const { title, description = "16-year-old developer passionate about building tr
 		<meta name="description" content={description} />
 		<meta name="keywords" content="Swastik Ram, Blockchain Architect, AI Engineer, Full-Stack Developer, Smart Contract Auditor, Web3 Developer Malaysia, ETHKL Winner, Sui Developer, Solana AI, Decentralized Systems" />
 		<meta name="author" content="Swastik Ram" />
-		<link rel="canonical" href="https://www.swastikram.com/" />
+		<link rel="canonical" href={pageUrl} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
 		<!-- JSON-LD Structured Data for Person -->
@@ -31,7 +42,7 @@ const { title, description = "16-year-old developer passionate about building tr
 				"@type": "Person",
 				"name": "Swastik Ram",
 				"url": "https://www.swastikram.com",
-				"image": "https://www.swastikram.com/og-image.jpg",
+				"image": "https://www.swastikram.com/og-image.png",
 				"jobTitle": "Blockchain Architect & AI Engineer",
 				"description": "16-year-old system architect with 6+ years of logic and 15+ international hackathon victories. Specializing in Web3 infrastructure and intelligent systems.",
 				"sameAs": [
@@ -44,19 +55,32 @@ const { title, description = "16-year-old developer passionate about building tr
 			}
 		</script>
 
-		<!-- Open Graph / Facebook -->
+		<!-- ═══════════════════════════════════════════════ -->
+		<!-- Open Graph — WhatsApp, Facebook, LinkedIn, etc -->
+		<!-- ═══════════════════════════════════════════════ -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://www.swastikram.com/" />
+		<meta property="og:site_name" content="Swastik Ram" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:url" content={pageUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="/og-image.jpg" />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Swastik Ram — Systems Architect & AI Engineer" />
 
-		<!-- Twitter Card -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://www.swastikram.com/" />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content="/twitter-card.jpg" />
+		<!-- ══════════════════════════════════════════════════ -->
+		<!-- Twitter / X Card — also read by Discord & Telegram -->
+		<!-- ══════════════════════════════════════════════════ -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@swastikram" />
+		<meta name="twitter:creator" content="@swastikram" />
+		<meta name="twitter:url" content={pageUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content="Swastik Ram — Systems Architect & AI Engineer" />
 
 		<!-- Robots -->
 		<meta name="robots" content="index, follow" />

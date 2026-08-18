@@ -13,10 +13,9 @@ export default function Hero() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+        <div className="max-w-4xl">
           <motion.div 
-            className="lg:col-span-7 flex flex-col items-start"
+            className="flex flex-col items-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -33,11 +32,10 @@ export default function Hero() {
             </motion.div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-6 leading-[0.9] select-none" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              Swastik<br />
-              <span style={{ background: "linear-gradient(135deg, hsl(252,100%,70%) 0%, hsl(282,90%,72%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Ram.</span>
+              Swastik <span style={{ background: "linear-gradient(135deg, hsl(252,100%,70%) 0%, hsl(282,90%,72%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Ram.</span>
             </h1>
 
-            <p className="text-white/45 font-normal max-w-lg mb-8 text-base md:text-lg leading-relaxed">
+            <p className="text-white/45 font-normal max-w-2xl mb-8 text-base md:text-lg leading-relaxed">
               Designing secure decentralized protocols and intelligent AI agents. 
               Translating complex research into production-grade systems.
             </p>
@@ -76,40 +74,6 @@ export default function Hero() {
               ))}
             </div>
           </motion.div>
-
-          {/* Profile Card Showcase */}
-          <motion.div 
-            className="lg:col-span-5 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative group max-w-[340px] w-full aspect-[4/5] rounded-[2.5rem] p-3 bg-white/[0.02] border border-white/5 shadow-2xl bento-inner-shadow">
-              <div className="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                style={{ background: "radial-gradient(circle at top, rgba(130,80,255,0.06), transparent 70%)" }} />
-              
-              <div className="w-full h-full rounded-[2rem] overflow-hidden bg-black/20 border border-white/5 relative">
-                <img 
-                  src="/avatar.png" 
-                  alt="Swastik Ram" 
-                  className="w-full h-full object-cover grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-95 transition-all duration-700 ease-out scale-100 group-hover:scale-[1.02]"
-                />
-                
-                {/* Subtle vignette gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Overlay details */}
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold text-white tracking-wide">Swastik Ram</span>
-                    <span className="text-[10px] text-white/40 font-medium">Kuala Lumpur, MY</span>
-                  </div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
         </div>
       </div>
     </section>

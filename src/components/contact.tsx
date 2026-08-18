@@ -1,31 +1,37 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Twitter, Link2 } from "lucide-react";
 
 export default function Contact() {
   const socialLinks = [
     { name: "Email", href: "mailto:deepml1818@gmail.com", icon: Mail },
-    { name: "GitHub", href: "https://github.com/DEEPML1818", icon: Github },
+    { name: "GitHub", href: "https://github.com/swastikram", icon: Github },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/swastikram/", icon: Linkedin },
     { name: "Twitter", href: "https://x.com/Swastik_Ram", icon: Twitter },
     { name: "Linktree", href: "https://www.swastikram.com/Linktree/index.html", icon: Link2 },
   ];
 
   return (
-    <section id="contact" className="py-32 px-6 relative overflow-hidden">
+    <section id="contact" className="py-24 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="premium-heading uppercase">Initiate Protocol</h2>
-          <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto mb-20 leading-relaxed">
-            Ready to architect the next-gen protocols? I'm always open to <span className="accent-text">deep-tech collaborations</span> and <span className="text-white">innovative ventures</span>.
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60 mb-5">Contact</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-6">
+            Get in{" "}
+            <span style={{ background: "linear-gradient(135deg, hsl(252,100%,70%) 0%, hsl(282,90%,72%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              Touch.
+            </span>
+          </h2>
+          <p className="text-white/45 text-base md:text-lg font-normal max-w-xl mx-auto mb-12 leading-relaxed">
+            I'm always open to discussing new systems, smart contract audits, or intelligent automation projects.
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-6 mb-24">
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {socialLinks.map((link, index) => (
             <motion.a
               key={link.name}
@@ -33,16 +39,16 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.05 }}
               viewport={{ once: true }}
             >
-              <div className="glass-card p-6 flex items-center gap-4 transition-all duration-500 hover:border-primary/50 hover:-translate-y-2">
-                <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <link.icon className="h-5 w-5 text-white/50 group-hover:text-primary transition-colors" />
+              <div className="glass-card px-5 py-4 rounded-xl flex items-center gap-3 border-white/[0.06] hover:border-primary/45 transition-all duration-300">
+                <div className="w-9 h-9 bg-white/[0.04] rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <link.icon className="h-4.5 w-4.5 text-white/40 group-hover:text-primary transition-colors" />
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 group-hover:text-white transition-colors">
+                <span className="text-[11px] font-semibold text-white/35 group-hover:text-white/80 transition-colors">
                   {link.name}
                 </span>
               </div>
@@ -51,19 +57,19 @@ export default function Contact() {
         </div>
 
         <motion.div
-          className="glass-card p-16 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent relative overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
+          className="glass-card p-10 md:p-12 border-primary/20 bg-gradient-to-br from-primary/[0.02] to-transparent relative overflow-hidden rounded-3xl"
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[120px] rounded-full -mr-32 -mt-32" />
-          <p className="text-2xl text-muted-foreground font-medium italic mb-10 leading-relaxed relative z-10">
+          <p className="text-xl md:text-2xl text-white/50 font-normal italic mb-8 leading-relaxed relative z-10">
             "The future isn't something that happens to us; it's something we <span className="text-white">create</span> with every line of code."
           </p>
-          <div className="flex items-center justify-center gap-6 relative z-10">
-             <div className="h-px w-12 bg-white/10"></div>
-             <p className="text-xs font-black uppercase tracking-[0.5em] text-primary">System Architect</p>
-             <div className="h-px w-12 bg-white/10"></div>
+          <div className="flex items-center justify-center gap-4 relative z-10">
+             <div className="h-px w-8 bg-white/10"></div>
+             <p className="text-[10px] font-semibold uppercase tracking-wider text-primary">Swastik Ram</p>
+             <div className="h-px w-8 bg-white/10"></div>
           </div>
         </motion.div>
       </div>

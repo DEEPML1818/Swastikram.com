@@ -35,34 +35,19 @@ const description = "16-year-old system architect with a decade of logic, 15+ in
 		<Media client:visible initialMedia={sortedPress.map(p => p.data)} />
 		<Contact client:visible />
 		
-		<footer class="py-20 relative overflow-hidden bg-black/60 backdrop-blur-3xl border-t border-white/5">
+		<footer class="py-16 relative overflow-hidden bg-black/40 backdrop-blur-md border-t border-white/[0.06]">
 			<div class="container mx-auto px-6">
-				<div className="grid md:grid-cols-3 gap-12 mb-16 items-center">
-					<div className="flex flex-col items-center md:items-start gap-4">
-						<span className="text-3xl font-black text-white italic tracking-tighter uppercase">Swastik <span className="text-primary italic">Ram.</span></span>
-						<p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">© _SYS_ARCH_2026_ // ALL_PROTOCOLS_RESERVED</p>
+				<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+					<div class="flex flex-col items-center md:items-start gap-2">
+						<span class="text-2xl font-black text-white tracking-tight">Swastik <span class="text-primary italic">Ram.</span></span>
+						<p className="text-xs text-white/30">© {new Date().getFullYear()} Swastik Ram. All rights reserved.</p>
 					</div>
 
-					<div className="flex flex-col items-center gap-6">
-						<div className="flex gap-1">
-							{[...Array(8)].map((_, i) => (
-								<div key={i} className={`w-1 h-4 bg-primary/${(i + 1) * 10} rounded-full animate-pulse transition-all`} />
-							))}
-						</div>
-						<span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">Neural_Link_Stable</span>
+					<div class="flex items-center gap-6 text-sm text-white/40">
+						<a href="#about" class="hover:text-white transition-colors">About</a>
+						<a href="#projects" class="hover:text-white transition-colors">Projects</a>
+						<a href="#contact" class="hover:text-white transition-colors">Contact</a>
 					</div>
-
-					<div className="hud-metadata text-right hidden md:block">
-						<div className="mb-2 uppercase">System_Epoch_0x992..1A</div>
-						<div className="flex items-center justify-end gap-2 text-primary">
-							<span className="animate-pulse">●</span>
-							<span className="uppercase">Node: SELANGOR_MY_ARCH</span>
-						</div>
-					</div>
-				</div>
-
-				<div className="text-center opacity-10">
-					<span className="text-[8px] font-mono whitespace-nowrap">01000001 01010010 01000011 01001000 01001001 01010100 01000101 01000011 01010100</span>
 				</div>
 			</div>
 		</footer>

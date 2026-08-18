@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { 
-  Cpu, Shield, Globe, Layers, Binary, Activity, Award
+  Cpu, Shield, Globe, Layers, Award
 } from "lucide-react";
 
 const skillCategories = [
@@ -9,28 +9,28 @@ const skillCategories = [
     icon: <Globe className="w-8 h-8" />,
     color: "hsl(var(--primary))",
     skills: ["Solidity", "Rust", "Move", "Vyper", "EVM", "Cross-Chain"],
-    meta: "NODE_STATUS: SYNCED // CHAIN_ID: 101"
+    meta: ""
   },
   {
     title: "AI Engineer",
     icon: <Cpu className="w-8 h-8" />,
     color: "hsl(var(--secondary))",
     skills: ["TensorFlow", "PyTorch", "NLP", "Trading Bots", "OpenAI GPT"],
-    meta: "NEURAL_LINK: ACTIVE // EPOCH: 512"
+    meta: ""
   },
   {
     title: "System Security",
     icon: <Shield className="w-8 h-8" />,
     color: "hsl(var(--accent))",
     skills: ["Smart Contract Auditing", "ZKP", "Pentesting", "Incident Mgmt"],
-    meta: "SECURITY_LVL: ALPHA // VULN_SCAN: 0"
+    meta: ""
   },
   {
     title: "Full-Stack Dev",
     icon: <Layers className="w-8 h-8" />,
     color: "white",
     skills: ["React", "Node.js", "TypeScript", "Docker", "CI/CD", "PostgreSQL"],
-    meta: "STACK_INTEGRITY: 100% // LATENCY: LOW"
+    meta: ""
   }
 ];
 
@@ -45,16 +45,13 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 relative overflow-hidden bg-transparent perspective-1000">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col mb-20">
-           <div className="flex items-center gap-3 mb-4">
-              <Binary className="w-5 h-5 text-primary" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Technical_Arsenal_03</span>
-           </div>
-           <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4">
-              The <span className="text-primary italic">Substrate.</span>
+        <div className="flex flex-col mb-16">
+           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60 mb-5">Skills & Tools</p>
+           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+              What I work with.
            </h2>
-           <p className="text-muted-foreground font-medium max-w-xl">
-              Deep-level expertise across the architectural stack of decentralized systems and machine intelligence.
+           <p className="text-white/45 text-base max-w-xl leading-relaxed">
+              My stack spans blockchain protocols, machine learning, and full-stack systems.
            </p>
         </div>
 
@@ -89,20 +86,22 @@ export default function Skills() {
                     {category.title}
                   </h3>
 
-                  <div className="flex flex-wrap gap-2 mb-10">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {category.skills.map((skill, sIdx) => (
                       <span 
                         key={sIdx}
-                        className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/50 group-hover:text-white transition-all cursor-default hover:bg-primary/20 hover:border-primary/40"
+                        className="px-3 py-1.5 rounded-lg bg-white/[0.05] border border-white/10 text-xs font-medium text-white/50 group-hover:text-white/80 transition-all cursor-default"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
 
-                  <div className="hud-metadata text-[8px] mt-auto">
-                     {category.meta}
-                  </div>
+                  {category.meta && (
+                    <div className="hud-metadata text-[8px] mt-auto">
+                       {category.meta}
+                    </div>
+                  )}
                 </div>
 
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
@@ -155,23 +154,6 @@ export default function Skills() {
            </div>
         </motion.div>
         
-        {/* Background Telemetry refined */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-10">
-           {[...Array(4)].map((_, i) => (
-             <div key={i} className="flex flex-col gap-2 font-mono text-[8px] text-white">
-                <div className="flex justify-between border-b border-white/20 pb-1">
-                   <span>DATA_STREAM_0{i}</span>
-                   <span>0xAA_{i}F</span>
-                </div>
-                <div className="flex gap-2">
-                   <Activity className="w-3 h-3 animate-pulse" />
-                   <div className="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
-                      <div className="h-full bg-white w-1/2" />
-                   </div>
-                </div>
-             </div>
-           ))}
-        </div>
       </div>
     </section>
   );

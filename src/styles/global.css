@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,24 +8,24 @@
   :root {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 4.2%;
+    --card: 240 10% 4.8%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 263.4 70% 50.4%;
+    --primary: 252 100% 70%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 180 100% 50%;
+    --secondary: 180 80% 55%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 280 100% 70%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 60%;
+    --accent: 282 90% 72%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 263.4 70% 50.4%;
-    --radius: 1.25rem;
+    --border: 240 4% 13%;
+    --input: 240 4% 13%;
+    --ring: 252 100% 70%;
+    --radius: 1rem;
   }
 }
 
@@ -33,43 +35,95 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', 'Outfit', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer components {
-  /* Neural Interface Glass: High Substance Layering */
+  /* ─── Modern Glass Card ─────────────────────────────────── */
   .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/5 shadow-2xl;
-    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+    box-shadow:
+      0 1px 0 0 rgba(255,255,255,0.06) inset,
+      0 24px 64px -16px rgba(0,0,0,0.5);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-500;
+  }
+  .glass-card-hover:hover {
+    @apply bg-white/[0.05];
+    border-color: rgba(255,255,255,0.14);
+    box-shadow:
+      0 1px 0 0 rgba(255,255,255,0.1) inset,
+      0 32px 80px -16px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(130,80,255,0.12);
   }
 
   .bento-inner-shadow {
-    box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), inset 0 0 40px rgba(255,255,255,0.01);
   }
 
+  /* ─── Typography ─────────────────────────────────────────── */
   .text-shadow-glow {
-    text-shadow: 0 0 20px hsla(var(--primary), 0.3), 0 0 40px hsla(var(--primary), 0.1);
+    text-shadow: 0 0 40px hsla(var(--primary), 0.25), 0 0 80px hsla(var(--primary), 0.08);
   }
 
   .premium-heading {
-    @apply text-5xl md:text-8xl font-black tracking-tighter leading-[0.85];
+    @apply font-black tracking-tight leading-[0.9];
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.3em] text-primary/70;
   }
 
   .hud-metadata {
-    @apply font-mono text-[8px] uppercase tracking-[0.2em] text-white/20 select-none;
+    @apply font-mono text-[9px] uppercase tracking-[0.15em] text-white/25 select-none;
   }
 
+  /* ─── Gradient Text ──────────────────────────────────────── */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  /* ─── Buttons ────────────────────────────────────────────── */
+  .magnetic-button {
+    @apply relative transition-all duration-300 ease-out;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 rounded-2xl font-semibold text-sm text-white
+      shadow-[0_8px_32px_rgba(130,80,255,0.3)] hover:shadow-[0_12px_48px_rgba(130,80,255,0.5)]
+      transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  /* ─── Ambient Blobs ──────────────────────────────────────── */
+  .glow-blob-primary {
+    @apply absolute rounded-full blur-[120px] pointer-events-none;
+    background: radial-gradient(circle, hsla(var(--primary), 0.12) 0%, transparent 70%);
+  }
+  .glow-blob-secondary {
+    @apply absolute rounded-full blur-[120px] pointer-events-none;
+    background: radial-gradient(circle, hsla(var(--secondary), 0.1) 0%, transparent 70%);
+  }
+
+  /* ─── Scanline (very subtle) ─────────────────────────────── */
   .scan-line {
     width: 100%;
-    height: 100px;
+    height: 80px;
     z-index: 10;
-    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.02) 50%, rgba(0,0,0,0) 100%);
-    opacity: 0.1;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.012) 50%, rgba(0,0,0,0) 100%);
+    opacity: 0.07;
     position: absolute;
     bottom: 100%;
-    animation: scanline 8s linear infinite;
+    animation: scanline 14s linear infinite;
   }
 
   @keyframes scanline {
@@ -77,40 +131,30 @@
     100% { bottom: -100%; }
   }
 
-  /* Magnetic Interaction System */
-  .magnetic-button {
-    @apply relative transition-transform duration-300 ease-out;
-  }
-
-  /* Glitch Text Utility */
+  /* ─── Glitch Text ────────────────────────────────────────── */
   .glitch-text {
     @apply relative inline-block;
   }
-
   .glitch-text::before,
   .glitch-text::after {
     content: attr(data-text);
     @apply absolute top-0 left-0 w-full h-full opacity-0 pointer-events-none;
   }
-
   .glitch-text:hover::before {
-    animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-    @apply opacity-100 text-primary -translate-x-[2px] z-[-1];
-    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    @apply opacity-70 text-primary;
   }
-  
   .glitch-text:hover::after {
-    animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
-    @apply opacity-100 text-secondary translate-x-[2px] z-[-1];
-    clip: rect(12px, 450px, 20px, 0);
+    animation: glitch-anim 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    @apply opacity-70 text-secondary;
   }
 
   @keyframes glitch-anim {
     0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
     100% { transform: translate(0); }
   }
 
@@ -119,11 +163,21 @@
   }
 }
 
-/* Hide scrollbar but keep functionality */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(130, 80, 255, 0.25);
+  border-radius: 2px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(130, 80, 255, 0.55);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+

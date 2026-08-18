@@ -1,23 +1,14 @@
 <div class="fixed inset-0 -z-30 bg-[#060608] overflow-hidden pointer-events-none">
-  {/* The Neural Particle Canvas */}
-  <canvas id="neural-canvas" class="absolute inset-0 opacity-40"></canvas>
+  {/* Neural Particle Canvas */}
+  <canvas id="neural-canvas" class="absolute inset-0 opacity-25"></canvas>
   
-  {/* Hud Grid & Scanlines */}
-  <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] bg-[length:100%_4px,3px_100%] pointer-events-none opacity-20"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.4)_100%)]"></div>
-  
-  {/* Floating Technical HUD Metadata Clusters */}
-  <div class="absolute top-20 right-10 flex flex-col items-end opacity-10 font-mono text-[8px] text-primary space-y-1 select-none">
-    <span>SYSTEM_NODE: ARCHITECT_V1</span>
-    <span>ENCRYPTION: AES_256_ACTIVE</span>
-    <span>STATUS: NEURAL_INTERFACE_OK</span>
-    <span class="animate-pulse">● SEARCHING_FOR_LOGIC</span>
-  </div>
-  
-  <div class="absolute bottom-20 left-10 flex flex-col opacity-10 font-mono text-[8px] text-secondary space-y-1 select-none">
-    <span>LATENCY: 4.2ms</span>
-    <span>UPTIME: 10Y_EXPERIENCE</span>
-    <span>X_COORDINATE: REDACTED</span>
+  {/* Subtle vignette */}
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.35)_100%)]"></div>
+
+  {/* Very faint metadata hints */}
+  <div class="absolute top-24 right-10 flex flex-col items-end opacity-[0.04] font-mono text-[8px] text-primary space-y-1 select-none">
+    <span>SYS: ARCHITECT_V1</span>
+    <span>STATUS: ACTIVE</span>
   </div>
 </div>
 

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Newspaper, ExternalLink, Bookmark, Activity } from "lucide-react";
+﻿import { motion } from "framer-motion";
+import { Newspaper, ExternalLink, ArrowUpRight } from "lucide-react";
 
 interface MediaItem {
   title: string;
@@ -13,108 +13,97 @@ export default function Media({ initialMedia = [] }: { initialMedia?: MediaItem[
   if (!initialMedia || !Array.isArray(initialMedia)) return null;
 
   return (
-    <section id="media" className="py-32 relative overflow-hidden bg-transparent">
+    <section id="media" className="py-28 relative overflow-hidden bg-transparent">
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[180px]"
+          style={{ background: "radial-gradient(circle, rgba(130,80,255,0.06) 0%, transparent 70%)" }} />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
+        {/* Section header */}
         <motion.div
-          className="mb-24"
-          initial={{ opacity: 0, y: 30 }}
+          className="mb-16"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-4 mb-8">
-             <div className="h-px w-12 bg-accent/40" />
-             <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">Pulse_Log_02</h2>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-px w-8 rounded-full" style={{ background: "linear-gradient(90deg, hsl(252,100%,70%), transparent)" }} />
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Press Archive</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">
-            Press <span className="text-accent italic">Archive.</span>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            In the{" "}
+            <span style={{ background: "linear-gradient(135deg, hsl(252,100%,70%) 0%, hsl(282,90%,72%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              Media.
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground font-medium max-w-2xl leading-relaxed">
-            Documenting the evolution of decentralized logic and system design in <span className="text-white">global media</span>.
+          <p className="text-white/45 text-lg max-w-xl leading-relaxed font-normal">
+            Featured stories, interviews, and editorial coverage across global publications.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {initialMedia.map((item, index) => {
-            // Robust filename extraction for public serving
-            const filename = item.image ? item.image.split('/').pop() : null;
+            const filename = item.image ? item.image.split("/").pop() : null;
             const imagePath = filename ? `/media/${filename}` : null;
-            
+
             return (
-              <motion.div
+              <motion.a
                 key={index}
-                className="group perspective-1000"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -4 }}
               >
-                <motion.div
-                  className="glass-card border-white/5 bento-inner-shadow rounded-[3rem] overflow-hidden flex flex-col h-full transition-all duration-500 group-hover:border-accent/40 group-hover:bg-accent/[0.02]"
-                  whileHover={{ rotateX: 2, rotateY: -2, translateZ: 10 }}
-                >
-                  {/* Cinematic Preview Image */}
-                  <div className="relative h-64 overflow-hidden border-b border-white/5">
+                <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col border-white/[0.06] hover:border-white/14 transition-all duration-400 hover:shadow-[0_24px_64px_rgba(0,0,0,0.6)]">
+                  {/* Image area */}
+                  <div className="relative h-48 overflow-hidden bg-white/[0.03]">
                     {imagePath ? (
-                      <img 
-                        src={imagePath} 
+                      <img
+                        src={imagePath}
                         alt={item.title}
-                        className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110"
+                        className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-white/5">
-                         <Newspaper className="w-12 h-12 text-white/10" />
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Newspaper className="w-10 h-10 text-white/10" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-[#060608]/20 to-transparent" />
                     
-                    {/* HUD Scanline overlay on image */}
-                    <div className="absolute inset-0 scan-line opacity-20 pointer-events-none" />
+                    {/* Publication badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-semibold text-white/70">
+                        {item.publication}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="p-10 flex flex-col flex-1">
-                    {/* Card HUD Header */}
-                    <div className="flex justify-between items-start mb-8">
-                      <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
-                          <Newspaper className="w-5 h-5 text-accent" />
-                        </div>
-                        <div>
-                          <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-accent/60">{item.publication}</span>
-                          <span className="text-[10px] font-mono text-white/20 uppercase tracking-tighter">Secure_Dispatch_ID_{index}</span>
-                        </div>
-                      </div>
-                      <Bookmark className="w-5 h-5 text-white/5 group-hover:text-accent/40 transition-colors" />
-                    </div>
-
-                    <h3 className="text-3xl font-black text-white uppercase tracking-tight mb-6 group-hover:text-accent transition-colors duration-300 leading-tight">
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-base font-bold text-white/90 group-hover:text-white mb-2.5 leading-snug transition-colors line-clamp-2">
                       {item.title}
                     </h3>
-                    
-                    <p className="text-muted-foreground mb-12 text-md leading-relaxed font-bold line-clamp-2">
-                       {item.description}
+                    <p className="text-sm text-white/40 leading-relaxed line-clamp-2 mb-5 font-normal flex-1">
+                      {item.description}
                     </p>
 
-                    <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                         <Activity className="w-3 h-3 text-accent animate-pulse" />
-                         <span className="text-[9px] font-black uppercase tracking-widest text-white/30 italic">Technical_Release</span>
+                    <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+                      <span className="text-[11px] font-medium text-white/30 uppercase tracking-wider">Read article</span>
+                      <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
+                        <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-primary transition-colors" />
                       </div>
-                      
-                      <motion.a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="magnetic-button inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-accent hover:text-white transition-colors group/link px-6 py-3 rounded-xl bg-accent/10 border border-accent/20"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        Read Dispatch
-                        <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                      </motion.a>
                     </div>
                   </div>
-                </motion.div>
-              </motion.div>
+                </div>
+              </motion.a>
             );
           })}
         </div>

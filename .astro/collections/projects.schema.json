@@ -41,7 +41,6 @@
   "required": [
     "title",
     "description",
-    "image",
     "link",
     "alt",
     "tech",

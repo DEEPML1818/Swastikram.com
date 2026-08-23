@@ -32,7 +32,8 @@ const flagshipProjects: Project[] = [
       solution: "A three-tier microservices architecture providing real-time telemetry, AI-powered pit strategy, and driver behavior modeling (Digital Twins).",
       innovation: "Achieved sub-2-second Monte Carlo simulations (500 outcomes) using NumPy vectorization and Gemini 2.0 function calling for autonomous race engineering."
     },
-    image: "/media/gr-race-guardian.png"
+    image: "/media/gr-race-guardian.png",
+    link: "https://devpost.com/software/gr-race-guardian"
   },
   {
     title: "CashAPI",
@@ -46,7 +47,8 @@ const flagshipProjects: Project[] = [
       solution: "Implements the internet's native 402 error code, allowing agents to detect payment requirements and settle instantly via BCH 0-conf.",
       innovation: "Moving BCH from 'Peer-to-Peer Cash' to 'Machine-to-Machine Infrastructure' for the autonomous agent economy."
     },
-    image: "/media/cashapi-logo.png"
+    image: "/media/cashapi-logo.png",
+    link: "https://dorahacks.io/buidl/39454"
   }
 ];
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Twitter, Link2 } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Contact() {
   const socialLinks = [
@@ -7,7 +7,6 @@ export default function Contact() {
     { name: "GitHub", href: "https://github.com/swastikram", icon: Github },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/swastikram/", icon: Linkedin },
     { name: "Twitter", href: "https://x.com/Swastik_Ram", icon: Twitter },
-    { name: "Linktree", href: "https://www.swastikram.com/Linktree/index.html", icon: Link2 },
   ];
 
   return (

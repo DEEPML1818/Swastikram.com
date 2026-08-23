@@ -24,6 +24,18 @@ const {
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- Theme State Initialization script (blocking to prevent transition flash) -->
+		<script is:inline>
+			(function() {
+				const theme = localStorage.getItem('theme') || 
+					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				if (theme === 'dark') {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			})();
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
@@ -85,7 +97,7 @@ const {
 		<!-- Robots -->
 		<meta name="robots" content="index, follow" />
 	</head>
-	<body class="bg-[#060608] overflow-x-hidden">
+	<body class="bg-background text-foreground overflow-x-hidden">
 		<Background />
 		<slot />
 	</body>
@@ -96,7 +108,7 @@ const {
 		margin: 0;
 		padding: 0;
 		min-height: 100vh;
-		background: #060608; 
+		background: hsl(var(--background)); 
 		scroll-behavior: smooth;
 	}
 </style>

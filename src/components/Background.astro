@@ -1,12 +1,12 @@
-<div class="fixed inset-0 -z-30 bg-[#060608] overflow-hidden pointer-events-none">
+<div class="fixed inset-0 -z-30 bg-background overflow-hidden pointer-events-none">
   {/* Neural Particle Canvas */}
-  <canvas id="neural-canvas" class="absolute inset-0 opacity-25"></canvas>
+  <canvas id="neural-canvas" class="absolute inset-0 opacity-35"></canvas>
   
-  {/* Subtle vignette */}
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.35)_100%)]"></div>
+  {/* Soft light vignette */}
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.7)_0%,rgba(240,242,245,0.4)_100%)]"></div>
 
   {/* Very faint metadata hints */}
-  <div class="absolute top-24 right-10 flex flex-col items-end opacity-[0.04] font-mono text-[8px] text-primary space-y-1 select-none">
+  <div class="absolute top-24 right-10 flex flex-col items-end opacity-[0.06] font-mono text-[8px] text-primary space-y-1 select-none">
     <span>SYS: ARCHITECT_V1</span>
     <span>STATUS: ACTIVE</span>
   </div>
@@ -36,8 +36,8 @@
 
   function draw() {
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = 'hsla(263, 70%, 50%, 0.5)';
-    ctx.strokeStyle = 'hsla(190, 90%, 50%, 0.1)';
+    ctx.fillStyle = 'hsla(252, 85%, 58%, 0.22)';
+    ctx.strokeStyle = 'hsla(180, 80%, 38%, 0.08)';
     ctx.lineWidth = 0.5;
 
     particles.forEach((p, i) => {

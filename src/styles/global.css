@@ -6,26 +6,46 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 4.8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 252 100% 70%;
+    --background: 240 14% 97.5%;
+    --foreground: 240 10% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 252 85% 58%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 180 80% 55%;
+    --secondary: 180 80% 38%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 60%;
-    --accent: 282 90% 72%;
+    --muted: 240 6% 93%;
+    --muted-foreground: 240 5% 42%;
+    --accent: 282 75% 55%;
     --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 4% 13%;
-    --input: 240 4% 13%;
-    --ring: 252 100% 70%;
+    --border: 240 6% 89%;
+    --input: 240 6% 89%;
+    --ring: 252 85% 58%;
     --radius: 1rem;
+  }
+
+  .dark {
+    --background: 240 14% 3.5%;
+    --foreground: 0 0% 100%;
+    --card: 240 10% 5.5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 10% 5.5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 252 85% 68%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 180 80% 45%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 282 75% 65%;
+    --accent-foreground: 240 5.9% 90%;
+    --border: 240 6% 12%;
+    --input: 240 6% 12%;
+    --ring: 252 85% 68%;
   }
 }
 
@@ -34,7 +54,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-family: 'Inter', 'Outfit', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
@@ -46,31 +66,51 @@
 @layer components {
   /* ─── Modern Glass Card ─────────────────────────────────── */
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+    @apply bg-white/55 backdrop-blur-xl border border-black/[0.05] shadow-xl transition-all duration-300;
     box-shadow:
-      0 1px 0 0 rgba(255,255,255,0.06) inset,
-      0 24px 64px -16px rgba(0,0,0,0.5);
+      0 1px 0 0 rgba(255,255,255,0.7) inset,
+      0 16px 48px -16px rgba(0,0,0,0.06);
+  }
+
+  .dark .glass-card {
+    @apply bg-zinc-950/65 border-white/[0.04];
+    box-shadow:
+      0 1px 0 0 rgba(255,255,255,0.03) inset,
+      0 16px 48px -16px rgba(0,0,0,0.5);
   }
 
   .glass-card-hover {
     @apply glass-card transition-all duration-500;
   }
+  
   .glass-card-hover:hover {
-    @apply bg-white/[0.05];
-    border-color: rgba(255,255,255,0.14);
+    @apply bg-white/75;
+    border-color: rgba(0,0,0,0.1);
     box-shadow:
-      0 1px 0 0 rgba(255,255,255,0.1) inset,
-      0 32px 80px -16px rgba(0,0,0,0.6),
-      0 0 0 1px rgba(130,80,255,0.12);
+      0 1px 0 0 rgba(255,255,255,0.85) inset,
+      0 24px 60px -16px rgba(0,0,0,0.08),
+      0 0 0 1px rgba(130,80,255,0.06);
+  }
+
+  .dark .glass-card-hover:hover {
+    @apply bg-zinc-950/80 border-white/[0.08];
+    box-shadow:
+      0 1px 0 0 rgba(255,255,255,0.06) inset,
+      0 24px 60px -16px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(130,80,255,0.15);
   }
 
   .bento-inner-shadow {
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), inset 0 0 40px rgba(255,255,255,0.01);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 0 40px rgba(0,0,0,0.01);
+  }
+
+  .dark .bento-inner-shadow {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), inset 0 0 40px rgba(255,255,255,0.01);
   }
 
   /* ─── Typography ─────────────────────────────────────────── */
   .text-shadow-glow {
-    text-shadow: 0 0 40px hsla(var(--primary), 0.25), 0 0 80px hsla(var(--primary), 0.08);
+    text-shadow: 0 0 40px hsla(var(--primary), 0.15), 0 0 80px hsla(var(--primary), 0.05);
   }
 
   .premium-heading {
@@ -83,7 +123,7 @@
   }
 
   .hud-metadata {
-    @apply font-mono text-[9px] uppercase tracking-[0.15em] text-white/25 select-none;
+    @apply font-mono text-[9px] uppercase tracking-[0.15em] text-foreground/25 select-none;
   }
 
   /* ─── Gradient Text ──────────────────────────────────────── */

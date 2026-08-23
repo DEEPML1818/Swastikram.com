@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Cpu, Code2, ShieldAlert, Zap, Globe } from "lucide-react";
 
 const milestones = [
@@ -53,21 +53,21 @@ export default function Journey() {
           viewport={{ once: true }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/60 mb-5">Odyssey</p>
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tight mb-4">
             The{" "}
             <span style={{ background: "linear-gradient(135deg, hsl(252,100%,70%) 0%, hsl(282,90%,72%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Odyssey.
             </span>
           </h2>
-          <p className="text-white/45 text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-foreground/60 text-base max-w-xl mx-auto leading-relaxed">
             A 10-year evolution from a curious 6-year-old to a systems architect building the decentralized future.
           </p>
         </motion.div>
-
+ 
         <div className="relative">
           {/* Vertical Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-primary via-secondary to-accent opacity-20 hidden md:block" />
-
+ 
           <div className="space-y-16 md:space-y-28">
             {milestones.map((ms, index) => (
               <motion.div
@@ -82,27 +82,27 @@ export default function Journey() {
               >
                 {/* Content */}
                 <div className="flex-1 w-full">
-                  <div className="glass-card p-8 md:p-10 border-white/[0.06] rounded-2xl hover:border-primary/45 transition-all duration-300 relative group">
-                    <div className="absolute -top-6 right-8 text-6xl font-black text-white/[0.03] select-none transition-colors group-hover:text-primary/[0.05]">
+                  <div className="glass-card p-8 md:p-10 border-black/[0.05] rounded-2xl hover:border-primary/45 transition-all duration-300 relative group">
+                    <div className="absolute -top-6 right-8 text-6xl font-black text-foreground/[0.03] select-none transition-colors group-hover:text-primary/[0.05]">
                       {ms.year}
                     </div>
                     <div className="flex items-center gap-3.5 mb-4">
-                       <div className={`p-2.5 rounded-xl bg-white/[0.04] border border-white/10 ${ms.color}`}>
+                       <div className={`p-2.5 rounded-xl bg-black/[0.03] border border-black/[0.08] ${ms.color}`}>
                          <ms.icon className="w-5 h-5" />
                        </div>
-                       <h3 className="text-xl font-bold text-white tracking-tight">
+                       <h3 className="text-xl font-bold text-foreground tracking-tight">
                          {ms.title}
                        </h3>
                     </div>
-                    <p className="text-sm text-white/45 leading-relaxed font-normal">
+                    <p className="text-sm text-foreground/65 leading-relaxed font-normal">
                       {ms.description}
                     </p>
                   </div>
                 </div>
-
+ 
                 {/* Point */}
                 <div className="relative z-10 flex items-center justify-center w-10 h-10">
-                   <div className="absolute inset-0 bg-background border-4 border-white/10 rounded-full" />
+                   <div className="absolute inset-0 bg-background border-4 border-black/[0.08] rounded-full" />
                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${index % 2 === 0 ? "from-primary" : "from-secondary"} to-white shadow-[0_0_15px_rgba(130,80,255,0.4)]`} />
                 </div>
 

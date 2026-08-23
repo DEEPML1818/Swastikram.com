@@ -9,6 +9,7 @@ import Projects from '../components/projects';
 import Media from '../components/media';
 import Hackathons from '../components/hackathons';
 import Articles from '../components/articles';
+import Credentials from '../components/credentials';
 import Contact from '../components/contact';
 
 // Fetch Collections
@@ -28,25 +29,28 @@ const description = "16-year-old system architect with a decade of logic, 15+ in
 	<main>
 		<Hero client:load />
 		<Dossier client:visible />
-		<Skills client:visible />
-		<Projects client:visible initialProjects={sortedProjects.map(p => p.data)} />
-		<Hackathons client:visible />
-		<Articles client:visible />
+		<div class="-mt-16 relative z-20">
+			<Credentials client:visible />
+		</div>
 		<Media client:visible initialMedia={sortedPress.map(p => p.data)} />
+		<Articles client:visible />
+		<Skills client:visible />
+		<Hackathons client:visible />
+		<Projects client:visible initialProjects={sortedProjects.map(p => p.data)} />
 		<Contact client:visible />
 		
-		<footer class="py-16 relative overflow-hidden bg-black/40 backdrop-blur-md border-t border-white/[0.06]">
+		<footer class="py-16 relative overflow-hidden bg-black/[0.02] backdrop-blur-md border-t border-black/[0.06]">
 			<div class="container mx-auto px-6">
 				<div class="flex flex-col md:flex-row justify-between items-center gap-6">
 					<div class="flex flex-col items-center md:items-start gap-2">
-						<span class="text-2xl font-black text-white tracking-tight">Swastik <span class="text-primary italic">Ram.</span></span>
-						<p className="text-xs text-white/30">© {new Date().getFullYear()} Swastik Ram. All rights reserved.</p>
+						<span class="text-2xl font-black text-foreground tracking-tight">Swastik <span class="text-primary italic">Ram.</span></span>
+						<p class="text-xs text-foreground/45">© {new Date().getFullYear()} Swastik Ram. All rights reserved.</p>
 					</div>
 
-					<div class="flex items-center gap-6 text-sm text-white/40">
-						<a href="#about" class="hover:text-white transition-colors">About</a>
-						<a href="#projects" class="hover:text-white transition-colors">Projects</a>
-						<a href="#contact" class="hover:text-white transition-colors">Contact</a>
+					<div class="flex items-center gap-6 text-sm text-foreground/60">
+						<a href="#about" class="hover:text-foreground transition-colors">About</a>
+						<a href="#projects" class="hover:text-foreground transition-colors">Projects</a>
+						<a href="#contact" class="hover:text-foreground transition-colors">Contact</a>
 					</div>
 				</div>
 			</div>

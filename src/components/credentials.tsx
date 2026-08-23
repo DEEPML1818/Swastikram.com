@@ -56,24 +56,24 @@ export default function Credentials() {
                   </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full lg:w-auto">
                   {geminiBadges.map((badge, bIdx) => (
                     <motion.a 
                        key={bIdx}
                        href={badge.link}
                        target="_blank"
                        rel="noopener noreferrer"
-                       className="group/badge relative flex flex-col items-center gap-3 bg-white/40 dark:bg-zinc-900/45 backdrop-blur-3xl p-4 rounded-[1.5rem] border border-black/[0.05] dark:border-white/[0.04] group-hover/badge:border-primary/20 transition-all cursor-pointer block"
-                       whileHover={{ y: -4 }}
+                       className="group/badge relative flex flex-col items-center gap-4 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-3xl p-6 rounded-[2rem] border border-black/[0.05] dark:border-white/[0.04] group-hover/badge:border-primary/25 transition-all cursor-pointer block hover:shadow-lg"
+                       whileHover={{ y: -6 }}
                     >
-                       <div className="w-16 h-16 relative overflow-hidden">
+                       <div className="w-24 h-24 md:w-28 md:h-28 relative overflow-hidden flex items-center justify-center">
                           <img 
                              src={badge.img} 
                              alt={badge.title} 
-                             className="w-full h-full object-contain grayscale opacity-60 group-hover/badge:grayscale-0 group-hover/badge:opacity-100 transition-all duration-700"
+                             className="w-full h-full object-contain grayscale-[20%] opacity-90 group-hover/badge:grayscale-0 group-hover/badge:opacity-100 transition-all duration-500"
                           />
                        </div>
-                       <span className="text-[7.5px] font-black uppercase tracking-widest text-center text-foreground/50 group-hover/badge:text-primary transition-colors line-clamp-1">
+                       <span className="text-[9.5px] md:text-[10px] font-black uppercase tracking-widest text-center text-foreground/60 group-hover/badge:text-primary transition-colors leading-tight">
                           {badge.title}
                        </span>
                     </motion.a>

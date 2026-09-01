@@ -14,6 +14,11 @@ const projectsCollection = defineCollection({
     category: z.string(),
     featured: z.boolean().default(false),
     order: z.number().optional(),
+    dossier: z.object({
+      problem: z.string(),
+      solution: z.string(),
+      innovation: z.string(),
+    }).optional(),
   }),
 });
 

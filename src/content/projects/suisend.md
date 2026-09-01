@@ -1,11 +1,16 @@
 ---
 title: "SuiSend"
 description: "Offline-first NFC crypto wallet for Android and iOS. Store Sui blockchain keypairs on NTAG215 NFC cards, enabling secure offline transaction signing with deferred blockchain syncing. Think 'Touch 'n Go' meets Web3."
+image: "/media/suisend.png"
 link: "https://github.com/DEEPML1818/SuiSend"
 alt: "NFC technology and mobile payment interface"
 tech: "React Native • Sui • NFC • Move • Wormhole"
 status: "📱 Mobile App"
 category: "Wallet"
 featured: true
-order: 2
+order: 5
+dossier:
+  problem: "Cryptographic hardware wallets are expensive, and mobile transactions require continuous internet connections."
+  solution: "Offline-first NFC wallet using cheap NTAG215 cards to sign Sui blockchain transactions with deferred syncing."
+  innovation: "Touch-and-go signing interface that safely stores transaction packets offline until network connectivity is re-established."
 ---

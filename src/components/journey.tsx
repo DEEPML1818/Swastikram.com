@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Cpu, Code2, ShieldAlert, Zap, Globe } from "lucide-react";
+import { getAge } from "../utils/age";
 
 const milestones = [
   {
@@ -33,7 +34,7 @@ const milestones = [
   {
     year: "2025",
     title: "System Architect",
-    description: "Currently age 16. Architecting the future of decentralized security operations (dSOC) and intelligent automation for a more transparent future.",
+    description: `Currently age ${getAge()}. Architecting the future of decentralized security operations (dSOC) and intelligent automation for a more transparent future.`,
     icon: ShieldAlert,
     color: "text-accent",
   },

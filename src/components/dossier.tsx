@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { getAge } from "../utils/age";
 
 const highlights = [
   { label: "Started coding", value: "Age 6", sub: "Back in 2015" },
@@ -27,7 +28,7 @@ export default function Dossier() {
             <div className="space-y-5 text-[15px] text-foreground/70 leading-relaxed mb-10">
               <p>
                 I picked up my first computer at <span className="text-foreground font-semibold">age 6</span> and haven't stopped building since.
-                Now 16, I work at the intersection of <span className="text-foreground font-semibold">blockchain security</span> and <span className="text-foreground font-semibold">AI</span> —
+                Now {getAge()}, I work at the intersection of <span className="text-foreground font-semibold">blockchain security</span> and <span className="text-foreground font-semibold">AI</span> —
                 designing systems that are hard to break and harder to fool.
               </p>
               <p>

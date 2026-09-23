@@ -11,6 +11,7 @@ import Hackathons from '../components/hackathons';
 import Articles from '../components/articles';
 import Credentials from '../components/credentials';
 import Contact from '../components/contact';
+import { getAge } from '../utils/age';
 
 // Fetch Collections
 const allProjects = await getCollection('projects');
@@ -21,7 +22,7 @@ const sortedPress = pressArticles.sort((a, b) => (a.data.order || 99) - (b.data.
 
 // Metadata
 const title = "Swastik Ram — System Architect & AI Engineer";
-const description = "16-year-old system architect with a decade of logic, 15+ international hackathon victories, and Toyota GR partnerships. Engineering the future across AI and Web3.";
+const description = `${getAge()}-year-old system architect with a decade of logic, 15+ international hackathon victories, and Toyota GR partnerships. Engineering the future across AI and Web3.`;
 ---
 
 <Layout title={title} description={description}>
